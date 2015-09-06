@@ -1,5 +1,48 @@
-<ion-view  class="login-background">
-  <ion-content>
-    <h1>Login</h1>
-  </ion-content>
+<ion-view class="login-background">
+    <ion-content>
+        <div class="logo-set">
+            <div class="logo text-center">
+                <img src="img/ionic.png">
+            </div>
+        </div>
+        <div class="login-field">
+            <div class="list">
+                <label class="item item-input item-stacked-label">
+                    <i class="icon ln-user"></i>
+                    <input type="text" placeholder="Username">
+                </label>
+
+                <label class="item item-input item-stacked-label">
+                    <i class="icon ln-lock"></i>
+                    <input type="text" placeholder="Password">
+                </label>
+            </div>
+        </div>
+        <div class="login-btn">
+            <button class="button button-full button-positive">
+                sign up
+            </button>
+            <p class="text-center">forgot your password?</p>
+            <div class="or text-center">
+                <p>- OR -</p>
+            </div>
+            <div class="login-btn btn-set">
+
+                <button ng-click="facebooklogin()" class="button button-full button-positive-facebook button-block">
+                    Sign in With Facebook
+                </button>
+
+            </div>
+            <div class="login-btn btn-set">
+
+                <button ng-click="twitterlogin()" class="button button-full button-positive-twitter button-block">
+                    Sign in With Twitter
+                </button>
+
+            </div>
+        </div>
+    </ion-content>
+    <ion-footer-bar class="text-center">
+        <p class="text-center">Don't have an account? Create one</p>
+    </ion-footer-bar>
 </ion-view>
