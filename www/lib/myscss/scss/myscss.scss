@@ -24,7 +24,29 @@ $bar-title-font-size:             18px !default;
 $headings-font-weight:           300 !default;
 $button-font-size:                15px !default;
 $button-height:                   47px !default;
-     
+$font-size-input:                  15px !default;
+
+     //input type
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"] {
+
+  font-size:$font-size-input !important;
+  font-weight:$headings-font-weight;
+
+}
 // @font-face {
 //    font-family: 'Source Sans Pro';
 //    src: url("../fonts/SourceSansPro-Black.ttf");
@@ -131,7 +153,7 @@ a:hover {
     padding-left: 5px;
     &:before{
             font-size: 18px !important;
-    line-height: 52px !important;
+    line-height: 48px !important;
     }
 }
 .padded-top{
