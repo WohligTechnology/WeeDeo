@@ -32,42 +32,9 @@ $dark:                            #444 !default;
 a, a:hover {
   text-decoration: none; }
 
-.image-bg {
+.login-background {
   background-size: cover;
   height: 100% !important; }
-
-.bar.bar-transparent {
-  background-color: transparent;
-  border-color: transparent;
-  background-image: none; }
-  .bar.bar-transparent .title {
-    color: #fff; }
-
-.overlay-color {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  opacity: 0.35;
-  z-index: 1; }
-
-.overlay-box {
-  position: relative;
-  min-height: 100px;
-  max-height: 200px;
-  padding: 50px 0 20px; }
-  .overlay-box .logo {
-    position: relative;
-    z-index: 2; }
-    .overlay-box .logo img {
-      height: 100px;
-      width: auto; }
-
-.padded-form .item {
-  border-color: #f5f5f5; }
-.padded-form .item-input {
-  padding: 14px 0 13px 16px; }
 
 /*!
   Ionicons, v2.0.1
@@ -2617,10 +2584,10 @@ body, .ionic-body {
   overflow: hidden;
   margin: 0;
   padding: 0;
-  color: #4a606f;
+  color: #000;
   word-wrap: break-word;
   font-size: 14px;
-  font-family: "Source Sans Pro", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+  font-family: "Lato", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
   line-height: 20px;
   text-rendering: optimizeLegibility;
   -webkit-backface-visibility: hidden;
@@ -2848,9 +2815,9 @@ cite {
   text-align: center; }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-  color: #4a606f;
+  color: #000;
   font-weight: 500;
-  font-family: "Source Sans Pro", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+  font-family: "Lato", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
   line-height: 1.2; }
   h1 small, h2 small, h3 small, h4 small, h5 small, h6 small, .h1 small, .h2 small, .h3 small, .h4 small, .h5 small, .h6 small {
     font-weight: normal;
@@ -4201,7 +4168,7 @@ ion-tabs.tabs-color-active-dark .tab-item {
   white-space: nowrap;
   font-weight: 400;
   font-size: 14px;
-  font-family: "Source Sans Pro", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+  font-family: "Lato", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
   opacity: 0.7; }
   .tab-item:hover {
     cursor: pointer; }
@@ -5025,8 +4992,8 @@ a.item-content {
   position: absolute;
   top: 8px;
   left: 11px;
-  min-width: 32px;
-  min-height: 32px;
+  min-width: 34px;
+  min-height: 34px;
   font-size: 18px;
   line-height: 32px; }
   .item-button-left > .button .icon:before, .item-button-left .item-content > .button .icon:before {
@@ -5036,7 +5003,7 @@ a.item-content {
     line-height: 31px; }
   .item-button-left > .button > .button, .item-button-left .item-content > .button > .button {
     margin: 0px 2px;
-    min-height: 32px;
+    min-height: 34px;
     font-size: 18px;
     line-height: 32px; }
 
@@ -5058,8 +5025,8 @@ a.item-content {
   position: absolute;
   top: 8px;
   right: 16px;
-  min-width: 32px;
-  min-height: 32px;
+  min-width: 34px;
+  min-height: 34px;
   font-size: 18px;
   line-height: 32px; }
   .item-button-right > .button .icon:before, .item-button-right .item-content > .button .icon:before, .item-button-right > .buttons .icon:before, .item-button-right .item-content > .buttons .icon:before {
@@ -5069,8 +5036,8 @@ a.item-content {
     line-height: 31px; }
   .item-button-right > .button > .button, .item-button-right .item-content > .button > .button, .item-button-right > .buttons > .button, .item-button-right .item-content > .buttons > .button {
     margin: 0px 2px;
-    min-width: 32px;
-    min-height: 32px;
+    min-width: 34px;
+    min-height: 34px;
     font-size: 18px;
     line-height: 32px; }
 
@@ -5720,7 +5687,7 @@ label, input, button, select, textarea {
   line-height: 1.42857; }
 
 input, button, select, textarea {
-  font-family: "Source Sans Pro", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif; }
+  font-family: "Lato", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif; }
 
 .item-input {
   display: -webkit-box;
@@ -6608,14 +6575,14 @@ progress {
   padding: 0 12px;
   min-width: 52px;
   min-height: 47px;
-  border-width: 0px;
+  border-width: 1px;
   border-style: solid;
-  border-radius: 0px;
+  border-radius: 2px;
   vertical-align: top;
   text-align: center;
   text-overflow: ellipsis;
   font-size: 16px;
-  line-height: 43px;
+  line-height: 42px;
   cursor: pointer; }
   .button:hover {
     color: #444;
@@ -6636,10 +6603,10 @@ progress {
     pointer-events: none; }
   .button .icon:before, .button.icon:before, .button.icon-left:before, .button.icon-right:before {
     display: inline-block;
-    padding: 0 0 0px 0;
+    padding: 0 0 1px 0;
     vertical-align: inherit;
     font-size: 24px;
-    line-height: 42px;
+    line-height: 41px;
     pointer-events: none; }
   .button.icon-left:before {
     float: left;
@@ -6901,7 +6868,7 @@ progress {
   min-width: 28px;
   min-height: 30px;
   font-size: 12px;
-  line-height: 27px; }
+  line-height: 26px; }
   .button-small .icon:before, .button-small.icon:before, .button-small.icon-left:before, .button-small.icon-right:before {
     font-size: 16px;
     line-height: 19px;
@@ -6912,11 +6879,11 @@ progress {
   min-width: 68px;
   min-height: 59px;
   font-size: 20px;
-  line-height: 54px; }
+  line-height: 53px; }
   .button-large .icon:before, .button-large.icon:before, .button-large.icon-left:before, .button-large.icon-right:before {
-    padding-bottom: 0px;
+    padding-bottom: 2px;
     font-size: 32px;
-    line-height: 53px; }
+    line-height: 51px; }
 
 .button-icon {
   -webkit-transition: opacity .1s;
@@ -7048,10 +7015,10 @@ a.button {
   .button-bar > .button:before, .button-bar > .button .icon:before {
     line-height: 44px; }
   .button-bar > .button:first-child {
-    border-radius: 0px 0px 0px 0px; }
+    border-radius: 2px 0px 0px 2px; }
   .button-bar > .button:last-child {
     border-right-width: 1px;
-    border-radius: 0px 0px 0px 0px; }
+    border-radius: 0px 2px 2px 0px; }
 
 .button-bar > .button-small:before, .button-bar > .button-small .icon:before {
   line-height: 28px; }
