@@ -1,48 +1,39 @@
-<ion-view class="login-background">
-    <ion-content>
-        <div class="logo-set">
-            <div class="logo text-center">
-                <img src="img/ionic.png">
-            </div>
+<ion-view view-title="Sign In">
+
+  <ion-nav-bar class="bar-transparent"></ion-nav-bar>
+
+  <ion-content class="no-header">
+    <div class="overlay-box">
+      <div class="overlay-color royal-bg"></div>
+      <div class="logo text-center">
+        <img src="img/ionic.png">
+      </div>
+    </div>
+
+    <div class="padded-form">
+      <div class="list">
+        <label class="item item-input">
+          <input type="email" placeholder="Email Address">
+        </label>
+        <label class="item item-input">
+          <input type="password" placeholder="Password">
+        </label>
+      </div>
+      <div class="text-right padding-horizontal">
+        New User? <a href="" class="positive">Sign Up</a>
+      </div>
+    </div>
+
+    <div class="padding-top">
+        <button class="button button-positive button-block">Login</button>
+        
+        <div class="padding text-center">
+          - Or -
         </div>
-        <div class="user-field">
+        
+        <button class="button button-royal button-block">Login with Google</button>
+    </div>
 
-       <div class="list">
-  <label class="item item-input">
-   <i class="icon ln-user"></i>
-    <input type="text" placeholder="Username">
-  </label>
-  <label class="item item-input">
-     <i class="icon ln-lock"></i>
-    <input type="password"  placeholder="Password">
-  </label>
-</div>
-        </div>
-        <div class="user-btn">
-            <button class="button button-full button-positive">
-                sign in
-            </button>
-            <p class="text-center">forgot your password?</p>
-            <div class="or text-center">
-                <p>- OR -</p>
-            </div>
-            <div class="login-btn btn-set">
-
-                <button ng-click="facebooklogin()" class="button button-full button-positive-facebook button-block">
-                    Sign in With Facebook
-                </button>
-
-            </div>
-            <div class="login-btn btn-set">
-
-                <button ng-click="twitterlogin()" class="button button-full button-positive-twitter button-block">
-                    Sign in With Twitter
-                </button>
-
-            </div>
-        </div>
-    </ion-content>
-    <ion-footer-bar class="text-center">
-        <p class="text-center">Don't have an account? Create one</p>
-    </ion-footer-bar>
+  </ion-content>
 </ion-view>
+

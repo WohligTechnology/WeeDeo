@@ -1,5 +1,4 @@
 $light:                           #fff !default;
-$base:                            #212121 !default;
 $stable:                          #f8f8f8 !default;
 $positive:                        #387ef5 !default;
 $calm:                            #11c1f3 !default;
@@ -9,11 +8,16 @@ $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #444 !default;
 
+$font-family-sans-serif: "Source Sans Pro","Helvetica Neue","Roboto","Segoe UI",sans-serif !default;
+$font-family-light-sans-serif: "Lato","HelveticaNeue-Light","Roboto-Light","Segoe UI-Light";
 
- $font-family-sans-serif:"Lato","Helvetica Neue","Roboto","Segoe UI",sans-serif !default;
- $font-family-light-sans-serif:"Lato","HelveticaNeue-Light","Roboto-Light","Segoe UI-Light";
-  $login-bg-image:url('../img/login/1.jpg') no-repeat center center;    
-  $signup-bg-image:url('../img/login/2.jpg') no-repeat center center;    
+$login-bg-image:url('../img/login/1.jpg') no-repeat center center;   
+$signup-bg-image:url('../img/login/2.jpg') no-repeat center center;    
+
+$base-color: #4a606f  !default;
+
+$button-border-radius:            0px !default;
+$button-border-width:             0px !default;
      
  @font-face {
     font-family: 'Lato';
@@ -29,13 +33,52 @@ $dark:                            #444 !default;
     font-family: 'Lato';
     src: url(../fonts/Lato-Regular.ttf);
 }
-     a,
+a,
 a:hover {
     text-decoration: none
 }
-
-.login-background{
+.image-bg{
 //    background: $login-bg-image;
       background-size: cover;
     height:100% !important;
+}
+.bar.bar-transparent {
+    background-color: transparent;
+    border-color: transparent;
+    background-image: none;
+    
+    .title {
+        color: $light;
+    }
+}
+.overlay-color {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0.35;
+    z-index: 1;
+}
+.overlay-box {
+    position: relative;
+    min-height: 100px;
+    max-height: 200px;
+    padding: 50px 0 20px;
+    .logo {
+        position: relative;
+        z-index: 2;
+        img {
+        height: 100px;
+        width: auto;
+        }
+    }
+}
+.padded-form {
+    .item {
+    border-color: #f5f5f5;
+    }
+    .item-input {
+        padding: 14px 0 13px 16px;
+    }
 }
