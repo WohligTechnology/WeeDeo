@@ -1,41 +1,72 @@
 $light:                           #fff !default;
 $stable:                          #f8f8f8 !default;
-$positive:                        #387ef5 !default;
+$positive:                        #f4376a !default;
 $calm:                            #11c1f3 !default;
 $balanced:                        #33cd5f !default;
 $energized:                       #ffc900 !default;
 $assertive:                       #ef473a !default;
-$royal:                           #886aea !default;
+$royal:                           #3799f4 !default;
 $dark:                            #444 !default;
+
 
 $font-family-sans-serif: "Source Sans Pro","Helvetica Neue","Roboto","Segoe UI",sans-serif !default;
 $font-family-light-sans-serif: "Lato","HelveticaNeue-Light","Roboto-Light","Segoe UI-Light";
 
-$login-bg-image:url('../img/login/1.jpg') no-repeat center center;   
-$signup-bg-image:url('../img/login/2.jpg') no-repeat center center;    
+$login-bg-image:url('../img/login/2.jpg') no-repeat center center;   
+$signup-bg-image:url('../img/login/1.jpg') no-repeat center center;    
 
 $base-color: #4a606f  !default;
+$input-color:                    $base-color !default;
 
 $button-border-radius:            0px !default;
 $button-border-width:             0px !default;
+$bar-title-font-size:             18px !default;
+$headings-font-weight:           300 !default;
+$button-font-size:                15px !default;
+$button-height:                   47px !default;
      
- @font-face {
-    font-family: 'Lato';
-    src: url("../fonts/Lato-Bold.ttf");
+// @font-face {
+//    font-family: 'Source Sans Pro';
+//    src: url("../fonts/SourceSansPro-Black.ttf");
+//    font-weight: 400;
+//}
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: url(../fonts/SourceSansPro-Regular.ttf);
+    font-weight: 400;
+}
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: url(../fonts/SourceSansPro-Bold.ttf);
     font-weight: 700;
 }
 @font-face {
-    font-family: 'Lato';
-    src: url(../fonts/Lato-Light.ttf);
+    font-family: 'Source Sans Pro';
+    src: url(../fonts/SourceSansPro-ExtraLight.ttf);
+    font-weight: 200;
+}
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: url(../fonts/SourceSansPro-Light.ttf);
     font-weight: 300;
 }
 @font-face {
-    font-family: 'Lato';
-    src: url(../fonts/Lato-Regular.ttf);
+    font-family: 'Source Sans Pro';
+    src: url(../fonts/SourceSansPro-Semibold.ttf);
+    font-weight: 600;
+}
+.placeholder-icon {
+  color: $base-color;
+   
+
 }
 a,
 a:hover {
     text-decoration: none
+}
+.button{
+    
+    font-weight: $headings-font-weight;
 }
 .image-bg{
 //    background: $login-bg-image;
@@ -49,6 +80,7 @@ a:hover {
     
     .title {
         color: $light;
+        font-weight: $headings-font-weight;
     }
 }
 .overlay-color {
@@ -61,6 +93,8 @@ a:hover {
     z-index: 1;
 }
 .overlay-box {
+        background: $login-bg-image;
+      background-size: cover;
     position: relative;
     min-height: 100px;
     max-height: 200px;
@@ -74,6 +108,16 @@ a:hover {
         }
     }
 }
+.overlay-boxtwo{
+    background: $signup-bg-image;
+    @extend .overlay-box;
+    .logo{
+        @extend .logo; 
+        img{
+            @extend img;
+        }
+    }
+}
 .padded-form {
     .item {
     border-color: #f5f5f5;
@@ -81,4 +125,15 @@ a:hover {
     .item-input {
         padding: 14px 0 13px 16px;
     }
+}
+.padd-left{
+    font-size: 12px;
+    padding-left: 5px;
+    &:before{
+            font-size: 18px !important;
+    line-height: 52px !important;
+    }
+}
+.padded-top{
+    padding-top: 60px !important;
 }
