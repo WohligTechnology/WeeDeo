@@ -5,6 +5,12 @@ angular.module('starter.controllers', [])
 })
   .controller('HomeCtrl', function ($scope) {
 
+    })  
+    .controller('LoginCtrl', function ($scope) {
+
+    }) 
+    .controller('SignupCtrl', function ($scope) {
+
     })
 
     .controller('VideoCtrl', function ($scope) {
