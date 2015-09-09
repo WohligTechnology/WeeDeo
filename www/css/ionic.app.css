@@ -15,6 +15,10 @@ $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
+textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"] {
+  font-size: 15px !important;
+  font-weight: 300; }
+
 @font-face {
   font-family: 'Source Sans Pro';
   src: url(../fonts/SourceSansPro-Regular.ttf);
@@ -97,10 +101,64 @@ a, a:hover {
   padding-left: 5px; }
   .padd-left:before {
     font-size: 18px !important;
-    line-height: 52px !important; }
+    line-height: 48px !important; }
 
 .padded-top {
   padding-top: 60px !important; }
+
+.bg-img {
+  background: url('../img/background/1.jpg') no-repeat center center; }
+  .bg-img .bar-stable {
+    background: transparent !important;
+    background-image: none; }
+  .bg-img .bg-menu {
+    position: relative;
+    min-height: 155px; }
+  .bg-img .profile-set a {
+    color: #fff;
+    background-color: #f4376a;
+    border-radius: 20px;
+    font-size: 12px;
+    position: absolute;
+    right: 35%;
+    top: 53%;
+    width: 24px;
+    height: 24px;
+    padding: 3px 2px; }
+  .bg-img .side-image {
+    text-align: center;
+    width: 100%; }
+    .bg-img .side-image img {
+      text-align: center;
+      margin: 0 auto;
+      border-radius: 100%;
+      width: 95px;
+      height: 9 0px; }
+    .bg-img .side-image figcaption {
+      font-size: 18px;
+      color: #37F4DB;
+      font-weight: 100;
+      padding: 10px 0px 0px 0px; }
+    .bg-img .side-image p {
+      color: #f4376a; }
+    .bg-img .side-image .img-bg {
+      margin-top: 15px; }
+  .bg-img .bar {
+    background: transparent !important; }
+  .bg-img .menu-list .item {
+    background: transparent !important;
+    border-style: none; }
+    .bg-img .menu-list .item .item-content {
+      background: transparent !important;
+      color: #fff;
+      font-weight: 100;
+      text-transform: capitalize;
+      font-size: 16px;
+      padding: 16px 49px 16px 26px; }
+      .bg-img .menu-list .item .item-content i {
+        padding-right: 15px;
+        font-size: 20px;
+        vertical-align: sub; }
 
 /*!
   Ionicons, v2.0.1
@@ -4345,7 +4403,7 @@ ion-tabs.tabs-color-active-dark .tab-item {
   min-height: 100%;
   max-height: 100%;
   width: 275px;
-  background-color: #fff; }
+  background-color: transparent; }
   .menu .scroll-content {
     z-index: 10; }
   .menu .bar-header {

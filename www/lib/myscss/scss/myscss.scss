@@ -7,6 +7,7 @@ $energized:                       #ffc900 !default;
 $assertive:                       #ef473a !default;
 $royal:                           #3799f4 !default;
 $dark:                            #444 !default;
+$menu:                            #37F4DB !default;
 
 
 $font-family-sans-serif: "Source Sans Pro","Helvetica Neue","Roboto","Segoe UI",sans-serif !default;
@@ -14,6 +15,7 @@ $font-family-light-sans-serif: "Lato","HelveticaNeue-Light","Roboto-Light","Sego
 
 $login-bg-image:url('../img/login/2.jpg') no-repeat center center;   
 $signup-bg-image:url('../img/login/1.jpg') no-repeat center center;    
+$bg-menu:url('../img/background/1.jpg') no-repeat center center;    
 
 $base-color: #4a606f  !default;
 $input-color:                    $base-color !default;
@@ -25,6 +27,7 @@ $headings-font-weight:           300 !default;
 $button-font-size:                15px !default;
 $button-height:                   47px !default;
 $font-size-input:                  15px !default;
+$menu-bg:                         transparent !default;
 
      //input type
 textarea,
@@ -159,3 +162,81 @@ a:hover {
 .padded-top{
     padding-top: 60px !important;
 }
+
+//************ Side menu Scss ***********
+.bg-img{
+    background: $bg-menu;
+    .bar-stable {
+  background: transparent !important;
+      background-image: none;
+   
+  } 
+    .bg-menu{
+        position: relative;
+    min-height: 155px;
+}
+    .profile-set{
+        a{
+                color: #fff;
+    background-color: $positive;
+    border-radius: 20px;
+    font-size: 12px;
+    position: absolute;
+    right: 35%;
+    top: 53%;
+    width: 24px;
+    height: 24px;
+    padding: 3px 2px;
+        }
+    }  
+.side-image {
+    text-align: center;
+//    margin: 15px auto;
+    width: 100%;
+     img{
+        text-align: center;
+    margin: 0 auto;
+    border-radius: 100%;
+    width: 95px;
+    height: 9 0px; 
+    }
+    figcaption{
+            font-size: 18px;
+    color:$menu;
+    font-weight: 100;
+        padding: 10px 0px 0px 0px;
+    }
+    p{
+        color:$positive;
+    }
+    .img-bg{
+            margin-top: 15px;
+
+    }
+}
+    .bar{
+        background:$menu-bg !important; 
+    }
+    .menu-list{
+        .item{
+            background: $menu-bg !important;
+            border-style: none;
+            .item-content{
+                 background: $menu-bg !important;
+                color:$light;
+                    font-weight:100;
+    text-transform: capitalize;
+    font-size: 16px;
+                padding: 16px 49px 16px 26px;
+                i{
+                    padding-right: 15px;
+                    font-size: 20px;
+                        vertical-align: sub;
+                }
+            }
+        }
+    }
+}
+
+
+
