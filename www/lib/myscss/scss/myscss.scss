@@ -1,35 +1,37 @@
-$light:                           #fff !default;
-$stable:                          #f8f8f8 !default;
-$positive:                        #f4376a !default;
-$calm:                            #11c1f3 !default;
-$balanced:                        #33cd5f !default;
-$energized:                       #ffc900 !default;
-$assertive:                       #ef473a !default;
-$royal:                           #3799f4 !default;
-$dark:                            #444 !default;
-$menu:                            #37F4DB !default;
-
-
-$font-family-sans-serif: "Source Sans Pro","Helvetica Neue","Roboto","Segoe UI",sans-serif !default;
-$font-family-light-sans-serif: "Lato","HelveticaNeue-Light","Roboto-Light","Segoe UI-Light";
-
-$login-bg-image:url('../img/login/2.jpg') no-repeat center center;   
-$signup-bg-image:url('../img/login/1.jpg') no-repeat center center;    
-$bg-menu:url('../img/background/1.jpg') no-repeat center center;    
-
-$base-color: #4a606f  !default;
-$input-color:                    $base-color !default;
-
-$button-border-radius:            0px !default;
-$button-border-width:             0px !default;
-$bar-title-font-size:             18px !default;
-$headings-font-weight:           300 !default;
-$button-font-size:                15px !default;
-$button-height:                   47px !default;
-$font-size-input:                  15px !default;
-$menu-bg:                         transparent !default;
-
-     //input type
+$light: #fff !default;
+$stable: #3f51b5 !default;
+$positive: #f4376a !default;
+$calm: #11c1f3 !default;
+$balanced: #33cd5f !default;
+$energized: #ffc900 !default;
+$assertive: #ef473a !default;
+$royal: #3799f4 !default;
+$dark: #444 !default;
+$menu: #37F4DB !default;
+$font-family-sans-serif: "Source Sans Pro",
+"Helvetica Neue",
+"Roboto",
+"Segoe UI",
+sans-serif !default;
+$font-family-light-sans-serif: "Lato",
+"HelveticaNeue-Light",
+"Roboto-Light",
+"Segoe UI-Light";
+$login-bg-image:url('../img/login/2.jpg') no-repeat center center;
+$signup-bg-image:url('../img/login/1.jpg') no-repeat center center;
+$bg-menu:url('../img/background/1.jpg') no-repeat center center;
+$base-color: #4a606f !default;
+$input-color: $base-color !default;
+$button-border-radius: 0px !default;
+$button-border-width: 0px !default;
+$bar-title-font-size: 18px !default;
+$headings-font-weight: 300 !default;
+$button-font-size: 15px !default;
+$button-height: 47px !default;
+$font-size-input: 15px !default;
+$menu-bg: transparent !default;
+$border-color: #CBD1D6 !default;
+//input type
 textarea,
 input[type="text"],
 input[type="password"],
@@ -45,16 +47,27 @@ input[type="url"],
 input[type="search"],
 input[type="tel"],
 input[type="color"] {
-
-  font-size:$font-size-input !important;
-  font-weight:$headings-font-weight;
-
+    font-size: $font-size-input !important;
+    font-weight: $headings-font-weight;
 }
-// @font-face {
-//    font-family: 'Source Sans Pro';
-//    src: url("../fonts/SourceSansPro-Black.ttf");
-//    font-weight: 400;
-//}
+// *** Transition ******
+@mixin transition($transition-property,
+$transition-time) {
+    -webkit-transition: $transition-property $transition-time;
+    -moz-transition: $transition-property $transition-time;
+    -ms-transition: $transition-property $transition-time;
+    -o-transition: $transition-property $transition-time;
+    transition: $transition-property $transition-time;
+}
+// *** End *******
+//******** tab *******
+.tab-item.active {
+    border: 0 solid $positive !important;
+}
+// ******** bar scss ******
+.bar.bar-stable {
+    background-color: $stable !important;
+}
 @font-face {
     font-family: 'Source Sans Pro';
     src: url(../fonts/SourceSansPro-Regular.ttf);
@@ -81,28 +94,24 @@ input[type="color"] {
     font-weight: 600;
 }
 .placeholder-icon {
-  color: $base-color;
-   
-
+    color: $base-color;
 }
 a,
 a:hover {
     text-decoration: none
 }
-.button{
-    
+.button {
     font-weight: $headings-font-weight;
 }
-.image-bg{
-//    background: $login-bg-image;
-      background-size: cover;
-    height:100% !important;
+.image-bg {
+    //    background: $login-bg-image;
+    background-size: cover;
+    height: 100% !important;
 }
 .bar.bar-transparent {
     background-color: transparent;
     border-color: transparent;
     background-image: none;
-    
     .title {
         color: $light;
         font-weight: $headings-font-weight;
@@ -118,8 +127,8 @@ a:hover {
     z-index: 1;
 }
 .overlay-box {
-        background: $login-bg-image;
-      background-size: cover;
+    background: $login-bg-image;
+    background-size: cover;
     position: relative;
     min-height: 100px;
     max-height: 200px;
@@ -128,115 +137,237 @@ a:hover {
         position: relative;
         z-index: 2;
         img {
-        height: 100px;
-        width: auto;
+            height: 100px;
+            width: auto;
         }
     }
 }
-.overlay-boxtwo{
+.overlay-boxtwo {
     background: $signup-bg-image;
     @extend .overlay-box;
-    .logo{
-        @extend .logo; 
-        img{
+    .logo {
+        @extend .logo;
+        img {
             @extend img;
         }
     }
 }
 .padded-form {
     .item {
-    border-color: #f5f5f5;
+        border-color: #f5f5f5;
     }
     .item-input {
         padding: 14px 0 13px 16px;
     }
 }
-.padd-left{
+.padd-left {
     font-size: 12px;
     padding-left: 5px;
-    &:before{
-            font-size: 18px !important;
-    line-height: 48px !important;
+    &:before {
+        font-size: 18px !important;
+        line-height: 48px !important;
     }
 }
-.padded-top{
+.padded-top {
     padding-top: 60px !important;
 }
-
 //************ Side menu Scss ***********
-.bg-img{
+.bg-img {
     background: $bg-menu;
     .bar-stable {
-  background: transparent !important;
-      background-image: none;
-   
-  } 
-    .bg-menu{
-        position: relative;
-    min-height: 155px;
-}
-    .profile-set{
-        a{
-                color: #fff;
-    background-color: $positive;
-    border-radius: 20px;
-    font-size: 12px;
-    position: absolute;
-    right: 35%;
-    top: 53%;
-    width: 24px;
-    height: 24px;
-    padding: 3px 2px;
+        background-image: none;
+        color: $light;
+        .title {
+            color: $light !important;
         }
-    }  
-.side-image {
-    text-align: center;
-//    margin: 15px auto;
-    width: 100%;
-     img{
+        .button.button-clear {
+            color: $light;
+        }
+    }
+    .bg-menu {
+        position: relative;
+        min-height: 155px;
+    }
+    .profile-set {
+        a {
+            color: #fff;
+            background-color: $positive;
+            border-radius: 20px;
+            font-size: 12px;
+            position: absolute;
+            right: 35%;
+            top: 53%;
+            width: 24px;
+            height: 24px;
+            padding: 3px 2px;
+        }
+    }
+    .side-image {
         text-align: center;
-    margin: 0 auto;
-    border-radius: 100%;
-    width: 95px;
-    height: 9 0px; 
-    }
-    figcaption{
+        //    margin: 15px auto;
+        width: 100%;
+        img {
+            text-align: center;
+            margin: 0 auto;
+            border-radius: 100%;
+            width: 95px;
+            height: 9 0px;
+        }
+        figcaption {
             font-size: 18px;
-    color:$menu;
-    font-weight: 100;
-        padding: 10px 0px 0px 0px;
-    }
-    p{
-        color:$positive;
-    }
-    .img-bg{
+            color: $menu;
+            font-weight: 100;
+            padding: 10px 0px 0px 0px;
+        }
+        p {
+            color: $positive;
+        }
+        .img-bg {
             margin-top: 15px;
-
+        }
     }
-}
-    .bar{
-        background:$menu-bg !important; 
+    .bar {
+        background: $menu-bg;
     }
-    .menu-list{
-        .item{
+    .menu-list {
+        .item {
             background: $menu-bg !important;
             border-style: none;
-            .item-content{
-                 background: $menu-bg !important;
-                color:$light;
-                    font-weight:100;
-    text-transform: capitalize;
-    font-size: 16px;
+            .item-content {
+                background: $menu-bg !important;
+                color: $light;
+                font-weight: 100;
+                text-transform: capitalize;
+                font-size: 16px;
                 padding: 16px 49px 16px 26px;
-                i{
+                i {
                     padding-right: 15px;
                     font-size: 20px;
-                        vertical-align: sub;
+                    vertical-align: sub;
                 }
             }
         }
     }
 }
-
-
-
+.active {
+    color: #fff;
+    border: 0 solid #fff;
+    border-width: 0px 0px 3px 0px !important;
+}
+.tabs {
+    a {
+        span {
+            font-size: 14px;
+            font-weight: 300;
+            text-transform: uppercase;
+        }
+    }
+}
+.event {
+    .list {
+        margin: -1px 0px !important;
+        .item {
+            img {
+                border-radius: 4px;
+            }
+            h2 {
+                margin: 0 0 10px 0;
+                font-size: 15px;
+                color: $positive;
+            }
+            p {
+                font-size: 13px;
+                margin: 0px 0px;
+                //          color:#5C6BC0;
+            }
+        }
+    }
+}
+.twitt {
+    .list {
+        margin-bottom: 1px;
+        border-bottom: 1px solid $border-color;
+        .item {
+            border: none;
+            h2 {
+                margin: 0 0 0px 0;
+                font-size: 14px;
+            }
+            p {
+                font-size: 11px;
+                color: $positive;
+            }
+        }
+        .item-avatar {
+            padding-left: 66px;
+            min-height: 60px;
+            img {
+                max-width: 42px;
+                max-height: 42px;
+                width: 100%;
+                height: 100%;
+                border-radius: 0%;
+            }
+            span {
+                float: right;
+                font-size: 11px;
+                color: $base-color;
+            }
+        }
+        .twit-txt {
+            margin: 0;
+            padding: 0px 10px 10px 15px;
+            font-size: 13px;
+            line-height: 120%;
+        }
+    }
+}
+.video-set {
+    height: 100%;
+    width: 100%;
+    background-position: center center;
+    background-size: cover;
+    position: relative;
+    display: block;
+    overflow: hidden;
+    figure {
+        height: 180px;
+    }
+    .img-layer {
+        height: 180px;
+        background: -webkit-linear-gradient(rgba(119, 81, 210, 0) 55%, rgba(22, 22, 22, 1));
+        background: -moz-linear-gradient(rgba(119, 81, 210, 0) 55%, rgba(22, 22, 22, 1));
+        background: -ms-linear-gradient(rgba(119, 81, 210, 0) 55%, rgba(22, 22, 22, 1));
+        background: -o-linear-gradient(rgba(119, 81, 210, 0) 55%, rgba(22, 22, 22, 1));
+        position: relative;
+        @include transition(all,
+        0.5s);
+        position: absolute;
+        top: 0;
+        width: 100%;
+        span {
+            background-color: $positive;
+            color: $light;
+            padding: 2px 8px 3px 8px;
+            float: right;
+        }
+        .bottom-txt {
+            position: absolute;
+            width: 100%;
+            bottom: 0px;
+            color: $light;
+            h4 {
+                float: left;
+                color: $light;
+                padding-left: 12px;
+            }
+            p {
+                float: right;
+                font-size: 14px;
+                padding: 13px;
+                margin: 0px;
+                font-weight: 300;
+            }
+        }
+    }
+}

@@ -1,5 +1,118 @@
 <ion-view view-title="Home">
-  <ion-content>
-    <h1>Home</h1>
+
+<!--
+  <ion-tabs class="tabs-striped tabs-top tabs-background-stable tabs-color-light">
+
+    <ion-tab title="Latest " class="{{classa}}" ng-click="tabchange('latest',1)">
+      <ion-nav-view name="tab-dash"></ion-nav-view>
+    </ion-tab>
+
+    <ion-tab title="Favorites" class="{{classb}}" ng-click="tabchange('favorites',2)">
+      <ion-nav-view name="tab-friends"></ion-nav-view>
+    </ion-tab>
+
+    <ion-tab title="All" class="{{classc}}" ng-click="tabchange('all',3)">
+      <ion-nav-view name="tab-account"></ion-nav-view>
+    </ion-tab>
+
+  </ion-tabs>
+-->
+
+    <div class="tabs-striped tabs-top tabs-background-stable tabs-color-light">
+        <div class="tabs">
+            <a class="tab-item {{classa}}" ng-click="tabchange('video',1)">
+                <span>Video</span>
+            </a>
+            <a class="tab-item {{classb}}" ng-click="tabchange('event',2)">
+                <span>Events</span>
+            </a>
+            <a class="tab-item {{classc}}" ng-click="tabchange('Twitt',3)">
+                <span>Tweet</span>
+            </a>
+        </div>
+    </div>
+
+  <ion-content class="has-tabs-top">
+<div class="video" ng-show="tab=='video'" >
+   <div class="video-set">
+       <figure>
+           <img src="img/video/1.png" class="full-image">
+           <div class="img-layer">
+              <span>3.00</span>
+              <div class="bottom-txt">
+               <h4>Video Name</h4>
+               <p>4k View</p>
+               </div>
+           </div>
+       </figure>
+   </div>
+</div>
+<div class="event" ng-show="tab=='event'">
+   <div class="list">
+
+    <a class="item item-thumbnail-left" href="#">
+      <img src="img/event/1.jpg">
+      <h2>Pretty Hate Machine</h2>
+      <p>Date :</p>
+      <p>Venue :</p>
+      <p>Detail :</p>
+    </a>
+
+   
+
+</div>
+   <div class="list">
+
+    <a class="item item-thumbnail-left" href="#">
+      <img src="img/event/2.jpg">
+      <h2>Pretty Hate Machine</h2>
+      <p>Date :</p>
+      <p>Venue :</p>
+      <p>Detail :</p>
+    </a>
+
+   
+
+</div>
+   <div class="list">
+
+    <a class="item item-thumbnail-left" href="#">
+      <img src="img/event/3.jpg">
+      <h2>Pretty Hate Machine</h2>
+      <p>Date :</p>
+      <p>Venue :</p>
+      <p>Detail :</p>
+    </a>
+
+   
+
+</div>
+</div>
+<div class="twitt" ng-show="tab=='Twitt'">
+   <div class="list">
+
+    <a class="item item-avatar" href="#">
+      <img src="img/profile/2.jpg">
+      <span>Just Now</span>
+      <h2>Ami Koehler</h2>
+      <p>@dropperidiot</p>
+      
+    </a>
+<p class="twit-txt">Funny thing is, when you string all of these phrases together into a sentence, and multiple sentences to form a paragraph</p>
+
+</div>
+   <div class="list">
+
+    <a class="item item-avatar" href="#">
+      <img src="img/profile/3.jpg">
+      <span >Just Now</span>
+      <h2>Ami Koehler</h2>
+      <p>@dropperidiot</p>
+      
+    </a>
+<p class="twit-txt">Funny thing is, when you string all of these phrases together into a sentence, and multiple sentences to form a paragraph</p>
+
+</div>
+</div>
   </ion-content>
 </ion-view>
