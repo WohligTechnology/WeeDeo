@@ -1,0 +1,67 @@
+<ion-view view-title="Feed">
+       <div class="tabs-striped tabs-top tabs-background-stable tabs-color-light">
+        <div class="tabs">
+            <a class="tab-item {{classa}}" ng-click="tabchange('twitter',1)">
+                <span>twitter</span>
+            </a>
+            <a class="tab-item {{classb}}" ng-click="tabchange('instagram',2)">
+                <span>Instagram</span>
+            </a>
+          
+        </div>
+    </div>
+    <ion-content class="has-tabs-top">
+<div class="twitt" ng-show="tab=='twitter'">
+   <div class="list">
+
+    <a class="item item-avatar" href="#">
+      <img src="img/profile/2.jpg">
+      <span>Just Now</span>
+      <h2>Ami Koehler</h2>
+      <p>@dropperidiot</p>
+      
+    </a>
+<p class="twit-txt">Funny thing is, when you string all of these phrases together into a sentence, and multiple sentences to form a paragraph</p>
+
+</div>
+   <div class="list">
+
+    <a class="item item-avatar" href="#">
+      <img src="img/profile/3.jpg">
+      <span >Just Now</span>
+      <h2>Ami Koehler</h2>
+      <p>@dropperidiot</p>
+      
+    </a>
+<p class="twit-txt">Funny thing is, when you string all of these phrases together into a sentence, and multiple sentences to form a paragraph</p>
+
+</div>
+</div>
+<div class="twitt" ng-show="tab=='instagram'">
+   <div class="list">
+
+    <a class="item item-avatar" href="#">
+      <img src="img/profile/2.jpg">
+      <span>Just Now</span>
+      <h2>Ami Koehler</h2>
+      <p>@dropperidiot</p>
+      
+    </a>
+<p class="twit-txt">Funny thing is, when you string all of these phrases together into a sentence, and multiple sentences to form a paragraph</p>
+
+</div>
+   <div class="list">
+
+    <a class="item item-avatar" href="#">
+      <img src="img/profile/3.jpg">
+      <span >Just Now</span>
+      <h2>Ami Koehler</h2>
+      <p>@dropperidiot</p>
+      
+    </a>
+<p class="twit-txt">Funny thing is, when you string all of these phrases together into a sentence, and multiple sentences to form a paragraph</p>
+
+</div>
+</div>
+    </ion-content>
+</ion-view>

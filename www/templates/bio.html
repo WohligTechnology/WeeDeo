@@ -1,5 +1,74 @@
 <ion-view view-title="Bio">
-  <ion-content>
-    <h1>Bio</h1>
-  </ion-content>
+    <ion-content>
+        <div class="profile">
+            <div class="profile-bg">
+                <img src="img/background/3.jpg" class="full-image">
+                <div class="profile-pic bio-pic">
+                    <i class="ln-share2"></i>
+                </div>
+            </div>
+        </div>
+        <div class="bio-info">
+
+            <div class=" text-center">
+                <h3>Jessica Lucy</h3>
+            </div>
+
+            <div class="row">
+                <div class="col col-10">
+                    <div class="bio-icon">
+                        <i class="ln-user"></i>
+                    </div>
+                </div>
+                <div class="col col-90">
+                    <div class="bio-text">
+                        <h5>About</h5>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col col-10">
+                    <div class="bio-icon">
+                        <i class="ln-bicycle"></i>
+                    </div>
+                </div>
+                <div class="col col-90">
+                    <div class="bio-text">
+                        <h5>Hobbies</h5>
+                        <p>Sweeming, Cycling, Gaming, Fashion, Cooking, PLayi ng tennis, Singing</p>
+                    </div>
+                </div>
+
+            </div>
+                   <div class="row">
+                <div class="col col-10">
+                    <div class="bio-icon">
+                        <i class="ln-photo"></i>
+                    </div>
+                </div>
+                <div class="col col-90">
+                    <div class="bio-text">
+                        <h5>Photos</h5>
+                       <ion-slide-box on-slide-changed="slideHasChanged($index)">
+          <ion-slide>
+            <div class="row">
+              <div class="col"><img src="img/event/3.jpg" class="full-image"></div>
+              <div class="col"><img src="img/event/4.jpg" class="full-image"></div>
+            </div>
+          </ion-slide>
+           <ion-slide>
+            <div class="row">
+              <div class="col"><img src="img/event/5.jpg" class="full-image"></div>
+              <div class="col"><img src="img/event/6.jpg" class="full-image"></div>
+            </div>
+          </ion-slide>
+        </ion-slide-box>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </ion-content>
 </ion-view>

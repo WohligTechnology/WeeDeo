@@ -107,6 +107,33 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                     controller: 'BioCtrl'
                 }
             }
+        }).
+        state('app.profile', {
+            url: '/profile',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/profile.html',
+                    controller: 'ProfileCtrl'
+                }
+            }
+        }).  
+    state('app.eventdetail', {
+            url: '/eventdetail',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/eventdetail.html',
+                    controller: 'EventdetailCtrl'
+                }
+            }
+        }).
+         state('app.feed', {
+            url: '/feed',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/feed.html',
+                    controller: 'FeedCtrl'
+                }
+            }
         })
         .state('app.home', {
             url: '/home',

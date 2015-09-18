@@ -268,6 +268,115 @@ a, a:hover {
         margin: 0px;
         font-weight: 300; }
 
+.profile {
+  position: relative; }
+  .profile .profile-bg {
+    height: 180px;
+    width: 100%;
+    overflow: hidden;
+    display: block; }
+    .profile .profile-bg img {
+      height: auto; }
+    .profile .profile-bg .profile-pic {
+      position: absolute;
+      width: 100%;
+      bottom: -40px; }
+      .profile .profile-bg .profile-pic img {
+        width: 70px;
+        height: 70px;
+        border-radius: 100%;
+        border: 3px solid #fff; }
+
+.profile-det {
+  position: absolute;
+  padding-top: 40px;
+  padding-left: 15px;
+  padding-right: 15px; }
+  .profile-det h3 {
+    font-size: 20px;
+    font-weight: 400; }
+  .profile-det p {
+    font-weight: 300;
+    margin: 0px; }
+  .profile-det a {
+    border: 1px solid #f4376a;
+    padding: 5px 16px;
+    line-height: 5;
+    background-color: #f4376a;
+    color: white;
+    font-weight: 300; }
+  .profile-det .profile-info .follow h4 {
+    margin-bottom: 0;
+    margin-top: 0;
+    font-size: 20px;
+    color: #f4376a; }
+  .profile-det .profile-info .follow p {
+    font-size: 15px; }
+  .profile-det .profile-info h5 {
+    font-size: 14px;
+    color: #f4376a;
+    margin: 0; }
+  .profile-det .profile-info .font-sz {
+    font-size: 12px !important; }
+  .profile-det .marbt {
+    margin-bottom: 10px; }
+
+.bio-pic {
+  bottom: -22px !important; }
+  .bio-pic i {
+    background-color: #f4376a;
+    color: #fff;
+    border-radius: 100%;
+    font-size: 20px;
+    padding: 13px;
+    float: right;
+    margin-right: 15px; }
+
+.bio-info {
+  margin-top: 22px; }
+  .bio-info .bio-icon i {
+    font-size: 18px; }
+  .bio-info .bio-text h5 {
+    font-size: 16px;
+    margin: 0px 0px 0px 0px;
+    font-weight: 300;
+    color: #f4376a;
+    text-transform: capitalize; }
+  .bio-info .bio-text p {
+    font-weight: 300;
+    font-size: 14px;
+    text-transform: capitalize; }
+
+.margintp {
+  margin-top: 40px; }
+
+.evnt-det h5 {
+  font-weight: 600;
+  margin-bottom: 0;
+  margin-top: 0;
+  text-transform: capitalize; }
+.evnt-det p {
+  text-transform: capitalize;
+  font-weight: 300;
+  margin: 0; }
+.evnt-det a {
+  color: #f4376a;
+  font-weight: 300; }
+.evnt-det i {
+  color: #f4376a;
+  font-size: 18px; }
+.evnt-det span {
+  font-size: 15px; }
+
+.evnt-set {
+  position: inherit !important;
+  padding-top: 0 !important; }
+  .evnt-set i {
+    font-size: 20px;
+    color: #f4376a; }
+  .evnt-set p {
+    font-size: 13px !important; }
+
 /*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/
