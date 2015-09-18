@@ -64,6 +64,9 @@ angular.module('starter.controllers', [])
     })  
     .controller('EventdetailCtrl', function ($scope) {
 
+    })
+    .controller('PlaylistCtrl', function ($scope) {
+
     })   
     .controller('FeedCtrl', function ($scope, $ionicScrollDelegate, $stateParams) {
             //        ***** tabchange ****

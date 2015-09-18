@@ -50,7 +50,6 @@ input[type="color"] {
     font-size: $font-size-input !important;
     font-weight: $headings-font-weight;
 }
-
 // *** Transition ******
 @mixin transition($transition-property,
 $transition-time) {
@@ -60,67 +59,55 @@ $transition-time) {
     -o-transition: $transition-property $transition-time;
     transition: $transition-property $transition-time;
 }
-
 // *** End *******
 //******** tab *******
 .tab-item.active {
     border: 0 solid $positive !important;
 }
-
 // ******** bar scss ******
 .bar.bar-stable {
     background-color: $stable !important;
 }
-
 @font-face {
     font-family: 'Source Sans Pro';
     src: url(../fonts/SourceSansPro-Regular.ttf);
     font-weight: 400;
 }
-
 @font-face {
     font-family: 'Source Sans Pro';
     src: url(../fonts/SourceSansPro-Bold.ttf);
     font-weight: 700;
 }
-
 @font-face {
     font-family: 'Source Sans Pro';
     src: url(../fonts/SourceSansPro-ExtraLight.ttf);
     font-weight: 200;
 }
-
 @font-face {
     font-family: 'Source Sans Pro';
     src: url(../fonts/SourceSansPro-Light.ttf);
     font-weight: 300;
 }
-
 @font-face {
     font-family: 'Source Sans Pro';
     src: url(../fonts/SourceSansPro-Semibold.ttf);
     font-weight: 600;
 }
-
 .placeholder-icon {
     color: $base-color;
 }
-
 a,
 a:hover {
     text-decoration: none
 }
-
 .button {
     font-weight: $headings-font-weight;
 }
-
 .image-bg {
     //    background: $login-bg-image;
     background-size: cover;
     height: 100% !important;
 }
-
 .bar.bar-transparent {
     background-color: transparent;
     border-color: transparent;
@@ -130,7 +117,6 @@ a:hover {
         font-weight: $headings-font-weight;
     }
 }
-
 .overlay-color {
     position: absolute;
     height: 100%;
@@ -140,7 +126,6 @@ a:hover {
     opacity: 0.35;
     z-index: 1;
 }
-
 .overlay-box {
     background: $login-bg-image;
     background-size: cover;
@@ -157,7 +142,6 @@ a:hover {
         }
     }
 }
-
 .overlay-boxtwo {
     background: $signup-bg-image;
     @extend .overlay-box;
@@ -168,7 +152,6 @@ a:hover {
         }
     }
 }
-
 .padded-form {
     .item {
         border-color: #f5f5f5;
@@ -177,7 +160,6 @@ a:hover {
         padding: 14px 0 13px 16px;
     }
 }
-
 .padd-left {
     font-size: 12px;
     padding-left: 5px;
@@ -186,11 +168,9 @@ a:hover {
         line-height: 48px !important;
     }
 }
-
 .padded-top {
     padding-top: 60px !important;
 }
-
 //************ Side menu Scss ***********
 .bg-img {
     background: $bg-menu;
@@ -269,13 +249,11 @@ a:hover {
         }
     }
 }
-
 .active {
     color: $light;
     border: 0 solid $light;
     border-width: 0px 0px 3px 0px !important;
 }
-
 .tabs {
     a {
         span {
@@ -285,7 +263,6 @@ a:hover {
         }
     }
 }
-
 .event {
     .list {
         margin: -1px 0px !important;
@@ -306,7 +283,6 @@ a:hover {
         }
     }
 }
-
 .twitt {
     .list {
         margin-bottom: 1px;
@@ -346,7 +322,6 @@ a:hover {
         }
     }
 }
-
 .video-set {
     height: 100%;
     width: 100%;
@@ -396,7 +371,6 @@ a:hover {
         }
     }
 }
-
 .profile {
     position: relative;
     .profile-bg {
@@ -420,7 +394,6 @@ a:hover {
         }
     }
 }
-
 .profile-det {
     position: absolute;
     padding-top: 40px;
@@ -452,7 +425,6 @@ a:hover {
             }
             p {
                 font-size: 15px;
-                
             }
         }
         h5 {
@@ -468,7 +440,6 @@ a:hover {
         margin-bottom: 10px;
     }
 }
-
 .bio-pic {
     @extend .profile.profile-pic;
     bottom: -22px !important;
@@ -482,7 +453,6 @@ a:hover {
         margin-right: 15px;
     }
 }
-
 .bio-info {
     margin-top: 22px;
     .bio-icon {
@@ -505,41 +475,69 @@ a:hover {
         }
     }
 }
-.margintp{
-        margin-top: 40px;
+.margintp {
+    margin-top: 40px;
 }
-.evnt-det{
-  h5{
-          font-weight: 600;
-    margin-bottom: 0;  
-      margin-top: 0; 
-      text-transform: capitalize;
-   }
-    p{
-       text-transform: capitalize;
-         font-weight: 300;
+.evnt-det {
+    h5 {
+        font-weight: 600;
+        margin-bottom: 0;
+        margin-top: 0;
+        text-transform: capitalize;
+    }
+    p {
+        text-transform: capitalize;
+        font-weight: 300;
         margin: 0;
     }
-    a{
-        color:$positive;
+    a {
+        color: $positive;
         font-weight: 300;
     }
-    i{
-        color:$positive;
+    i {
+        color: $positive;
         font-size: 18px;
     }
-    span{
+    span {
         font-size: 15px;
     }
 }
-.evnt-set{
+.evnt-set {
     position: inherit !important;
-    padding-top:0 !important;
-    i{
-            font-size: 20px;
-        color:$positive;
+    padding-top: 0 !important;
+    i {
+        font-size: 20px;
+        color: $positive;
     }
-    p{
+    p {
         font-size: 13px !important;
+    }
+}
+.video-category {
+    .item {
+        padding: 0px 0px 10px 0px;
+        
+        figure{
+            height: 142px;
+            width: 100%;
+            overflow: hidden;
+            img{
+                height: auto;
+            }
+        }
+        .cat-name {
+            padding-left: 15px;
+            padding-top: 7px;
+            h4 {
+                font-size: 15px;
+                margin-bottom: 0;
+                font-weight: 400;
+                color:$positive;
+            }
+            p {
+                font-weight: 300;
+                font-size: 13px;
+            }
+        }
     }
 }

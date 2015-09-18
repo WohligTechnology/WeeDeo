@@ -125,6 +125,15 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                     controller: 'EventdetailCtrl'
                 }
             }
+        }).  
+    state('app.playlist', {
+            url: '/playlist',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/playlist.html',
+                    controller: 'PlaylistCtrl'
+                }
+            }
         }).
          state('app.feed', {
             url: '/feed',

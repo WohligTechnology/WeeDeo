@@ -377,6 +377,26 @@ a, a:hover {
   .evnt-set p {
     font-size: 13px !important; }
 
+.video-category .item {
+  padding: 0px 0px 10px 0px; }
+  .video-category .item figure {
+    height: 142px;
+    width: 100%;
+    overflow: hidden; }
+    .video-category .item figure img {
+      height: auto; }
+  .video-category .item .cat-name {
+    padding-left: 15px;
+    padding-top: 7px; }
+    .video-category .item .cat-name h4 {
+      font-size: 15px;
+      margin-bottom: 0;
+      font-weight: 400;
+      color: #f4376a; }
+    .video-category .item .cat-name p {
+      font-weight: 300;
+      font-size: 13px; }
+
 /*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/
