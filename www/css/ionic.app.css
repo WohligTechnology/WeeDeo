@@ -71,6 +71,9 @@ a, a:hover {
     color: #fff;
     font-weight: 300; }
 
+.padzero {
+  padding: 0 !important; }
+
 .overlay-color {
   position: absolute;
   height: 100%;
@@ -396,6 +399,74 @@ a, a:hover {
     .video-category .item .cat-name p {
       font-weight: 300;
       font-size: 13px; }
+    .video-category .item .cat-name .pull-right {
+      float: right;
+      padding-right: 12px; }
+      .video-category .item .cat-name .pull-right i {
+        vertical-align: middle;
+        padding-right: 5px; }
+
+.vid-name h3 {
+  margin: 0;
+  text-transform: capitalize;
+  font-size: 16px;
+  font-weight: 400; }
+.vid-name p {
+  font-weight: 300;
+  margin: 0;
+  float: left; }
+.vid-name i {
+  float: right;
+  padding: 8px 5px 0px 0px; }
+
+.vid-pic img, .vid-pic .overlay-boxtwo .logo img, .overlay-boxtwo .logo .vid-pic img {
+  border-radius: 100%;
+  width: 100%;
+  height: 46px; }
+
+.comp-name {
+  padding-top: 8px; }
+  .comp-name h4 {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 400;
+    text-transform: capitalize; }
+
+.subscribe {
+  padding-top: 16px;
+  font-size: 13px; }
+  .subscribe i {
+    font-size: 14px; }
+
+.paddingtp {
+  padding-top: 22px !important; }
+
+.related-video {
+  padding-top: 15px; }
+  .related-video .all-video .image-hold {
+    position: relative;
+    top: 0px;
+    left: 10px;
+    background-size: contain;
+    max-width: 80px;
+    background-position: center;
+    max-height: 80px;
+    width: 80px;
+    height: 80px;
+    background-image: url("../img/video/3.jpg");
+    background-repeat: no-repeat;
+    background-color: #000; }
+  .related-video .all-video h4 {
+    font-size: 14px;
+    margin: 0;
+    font-weight: 400;
+    color: #f4376a;
+    text-transform: capitalize; }
+  .related-video .all-video p {
+    font-weight: 300;
+    font-size: 13px;
+    margin: 0;
+    text-transform: capitalize; }
 
 /*!
   Ionicons, v2.0.1

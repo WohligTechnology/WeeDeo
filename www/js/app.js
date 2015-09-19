@@ -134,6 +134,15 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                     controller: 'PlaylistCtrl'
                 }
             }
+        }).  
+    state('app.videodetail', {
+            url: '/videodetail',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/videodetail.html',
+                    controller: 'VideodetailCtrl'
+                }
+            }
         }).
          state('app.feed', {
             url: '/feed',

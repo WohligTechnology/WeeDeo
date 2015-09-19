@@ -50,6 +50,7 @@ input[type="color"] {
     font-size: $font-size-input !important;
     font-weight: $headings-font-weight;
 }
+
 // *** Transition ******
 @mixin transition($transition-property,
 $transition-time) {
@@ -59,55 +60,67 @@ $transition-time) {
     -o-transition: $transition-property $transition-time;
     transition: $transition-property $transition-time;
 }
+
 // *** End *******
 //******** tab *******
 .tab-item.active {
     border: 0 solid $positive !important;
 }
+
 // ******** bar scss ******
 .bar.bar-stable {
     background-color: $stable !important;
 }
+
 @font-face {
     font-family: 'Source Sans Pro';
     src: url(../fonts/SourceSansPro-Regular.ttf);
     font-weight: 400;
 }
+
 @font-face {
     font-family: 'Source Sans Pro';
     src: url(../fonts/SourceSansPro-Bold.ttf);
     font-weight: 700;
 }
+
 @font-face {
     font-family: 'Source Sans Pro';
     src: url(../fonts/SourceSansPro-ExtraLight.ttf);
     font-weight: 200;
 }
+
 @font-face {
     font-family: 'Source Sans Pro';
     src: url(../fonts/SourceSansPro-Light.ttf);
     font-weight: 300;
 }
+
 @font-face {
     font-family: 'Source Sans Pro';
     src: url(../fonts/SourceSansPro-Semibold.ttf);
     font-weight: 600;
 }
+
 .placeholder-icon {
     color: $base-color;
 }
+
 a,
 a:hover {
     text-decoration: none
 }
+
 .button {
     font-weight: $headings-font-weight;
 }
+
 .image-bg {
     //    background: $login-bg-image;
     background-size: cover;
     height: 100% !important;
 }
+
 .bar.bar-transparent {
     background-color: transparent;
     border-color: transparent;
@@ -117,6 +130,11 @@ a:hover {
         font-weight: $headings-font-weight;
     }
 }
+
+.padzero {
+    padding: 0 !important;
+}
+
 .overlay-color {
     position: absolute;
     height: 100%;
@@ -126,6 +144,7 @@ a:hover {
     opacity: 0.35;
     z-index: 1;
 }
+
 .overlay-box {
     background: $login-bg-image;
     background-size: cover;
@@ -142,6 +161,7 @@ a:hover {
         }
     }
 }
+
 .overlay-boxtwo {
     background: $signup-bg-image;
     @extend .overlay-box;
@@ -152,6 +172,7 @@ a:hover {
         }
     }
 }
+
 .padded-form {
     .item {
         border-color: #f5f5f5;
@@ -160,6 +181,7 @@ a:hover {
         padding: 14px 0 13px 16px;
     }
 }
+
 .padd-left {
     font-size: 12px;
     padding-left: 5px;
@@ -168,9 +190,11 @@ a:hover {
         line-height: 48px !important;
     }
 }
+
 .padded-top {
     padding-top: 60px !important;
 }
+
 //************ Side menu Scss ***********
 .bg-img {
     background: $bg-menu;
@@ -249,11 +273,13 @@ a:hover {
         }
     }
 }
+
 .active {
     color: $light;
     border: 0 solid $light;
     border-width: 0px 0px 3px 0px !important;
 }
+
 .tabs {
     a {
         span {
@@ -263,6 +289,7 @@ a:hover {
         }
     }
 }
+
 .event {
     .list {
         margin: -1px 0px !important;
@@ -283,6 +310,7 @@ a:hover {
         }
     }
 }
+
 .twitt {
     .list {
         margin-bottom: 1px;
@@ -322,6 +350,7 @@ a:hover {
         }
     }
 }
+
 .video-set {
     height: 100%;
     width: 100%;
@@ -371,6 +400,7 @@ a:hover {
         }
     }
 }
+
 .profile {
     position: relative;
     .profile-bg {
@@ -394,6 +424,7 @@ a:hover {
         }
     }
 }
+
 .profile-det {
     position: absolute;
     padding-top: 40px;
@@ -440,6 +471,7 @@ a:hover {
         margin-bottom: 10px;
     }
 }
+
 .bio-pic {
     @extend .profile.profile-pic;
     bottom: -22px !important;
@@ -453,6 +485,7 @@ a:hover {
         margin-right: 15px;
     }
 }
+
 .bio-info {
     margin-top: 22px;
     .bio-icon {
@@ -475,9 +508,11 @@ a:hover {
         }
     }
 }
+
 .margintp {
     margin-top: 40px;
 }
+
 .evnt-det {
     h5 {
         font-weight: 600;
@@ -502,6 +537,7 @@ a:hover {
         font-size: 15px;
     }
 }
+
 .evnt-set {
     position: inherit !important;
     padding-top: 0 !important;
@@ -513,15 +549,15 @@ a:hover {
         font-size: 13px !important;
     }
 }
+
 .video-category {
     .item {
         padding: 0px 0px 10px 0px;
-        
-        figure{
+        figure {
             height: 142px;
             width: 100%;
             overflow: hidden;
-            img{
+            img {
                 height: auto;
             }
         }
@@ -532,12 +568,101 @@ a:hover {
                 font-size: 15px;
                 margin-bottom: 0;
                 font-weight: 400;
-                color:$positive;
+                color: $positive;
             }
             p {
                 font-weight: 300;
                 font-size: 13px;
             }
+            .pull-right {
+                float: right;
+                padding-right: 12px;
+                i {
+                    vertical-align: middle;
+                    padding-right: 5px;
+                }
+            }
+        }
+    }
+}
+
+.vid-name {
+    h3 {
+        margin: 0;
+        text-transform: capitalize;
+        font-size: 16px;
+        font-weight: 400;
+    }
+    p {
+        font-weight: 300;
+        margin: 0;
+        float: left;
+    }
+    i {
+        float: right;
+        padding: 8px 5px 0px 0px;
+    }
+}
+
+.vid-pic {
+    img {
+        border-radius: 100%;
+        width: 100%;
+        height: 46px;
+    }
+}
+
+.comp-name {
+    padding-top: 8px;
+    h4 {
+        margin: 0;
+        font-size: 13px;
+        font-weight: 400;
+        text-transform: capitalize;
+    }
+}
+
+.subscribe {
+    padding-top: 16px;
+    font-size: 13px;
+    i {
+        font-size: 14px;
+    }
+}
+
+.paddingtp {
+    padding-top: 22px !important;
+}
+
+.related-video {
+        padding-top: 15px;
+    .all-video {
+        .image-hold{
+    position: relative;
+    top: 0px;
+    left: 10px;
+    background-size: contain;
+    max-width: 80px;
+    background-position: center;
+    max-height: 80px;
+    width: 80px;
+    height: 80px;
+    background-image: url("../img/video/3.jpg");
+    background-repeat: no-repeat;
+    background-color: #000;
+        }
+        h4 {
+            font-size: 14px;
+            margin: 0;
+            font-weight: 400;
+            color: $positive;
+            text-transform: capitalize
+        }
+        p {
+            font-weight: 300;
+            font-size: 13px;
+            margin: 0;
+            text-transform: capitalize;
         }
     }
 }
