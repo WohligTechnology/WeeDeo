@@ -1,24 +1,6 @@
 <ion-view view-title="Home">
 
-<!--
-  <ion-tabs class="tabs-striped tabs-top tabs-background-stable tabs-color-light">
-
-    <ion-tab title="Latest " class="{{classa}}" ng-click="tabchange('latest',1)">
-      <ion-nav-view name="tab-dash"></ion-nav-view>
-    </ion-tab>
-
-    <ion-tab title="Favorites" class="{{classb}}" ng-click="tabchange('favorites',2)">
-      <ion-nav-view name="tab-friends"></ion-nav-view>
-    </ion-tab>
-
-    <ion-tab title="All" class="{{classc}}" ng-click="tabchange('all',3)">
-      <ion-nav-view name="tab-account"></ion-nav-view>
-    </ion-tab>
-
-  </ion-tabs>
--->
-
-    <div class="tabs-striped tabs-top tabs-background-stable tabs-color-light">
+    <div class="tabs-striped tabs-top tabs-background-calm tabs-color-light">
         <div class="tabs">
             <a class="tab-item {{classa}}" ng-click="tabchange('video',1)">
                 <span>Video</span>
@@ -48,19 +30,27 @@
    </div>
 </div>
 <div class="event" ng-show="tab=='event'">
-   <div class="list">
 
-    <a class="item item-thumbnail-left" href="#">
-      <img src="img/event/1.jpg">
-      <h2>Pretty Hate Machine</h2>
-      <p>Date :</p>
-      <p>Venue :</p>
-      <p>Detail :</p>
-    </a>
+        <div class="padzero event">
 
-   
+            <div class="all-video list">
+                <div class="row item" ng-repeat="item in video" ui-sref="app.videodetail" >
+                    <div class="col col-33">
+                        <div class="image-hold" ng-style="{'background-image':'url({{item.image}})'}">
 
-</div>
+                        </div>
+                    </div>
+                    <div class="col col-67">
+                           <h2>{{item.title}}</h2>
+      <p>Date : {{item.date}}</p>
+      <p>Venue : {{item.venue}}</p>
+      <p>Detail : {{item.detail}}</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+<!--
    <div class="list">
 
     <a class="item item-thumbnail-left" href="#">
@@ -87,6 +77,7 @@
    
 
 </div>
+-->
 </div>
 <div class="twitt" ng-show="tab=='Twitt'">
    <div class="list">

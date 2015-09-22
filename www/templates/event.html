@@ -1,46 +1,25 @@
 <ion-view view-title="Event">
   <ion-content>
     <ion-list>
-        <div class="event">
-         <div class="list">
+        <div class="padzero event">
 
-    <a class="item item-thumbnail-left" href="#/app/eventdetail">
-      <img src="img/event/1.jpg">
-      <h2>Pretty Hate Machine</h2>
-      <p>Date :</p>
-      <p>Venue :</p>
-      <p>Detail :</p>
-    </a>
+            <div class="all-video list">
+                <div class="row item" ng-repeat="item in video" ui-sref="app.videodetail" >
+                    <div class="col col-33">
+                        <div class="image-hold" ng-style="{'background-image':'url({{item.image}})'}">
 
-   
+                        </div>
+                    </div>
+                    <div class="col col-67">
+                           <h2>{{item.title}}</h2>
+      <p>Date : {{item.date}}</p>
+      <p>Venue : {{item.venue}}</p>
+      <p>Detail : {{item.detail}}</p>
+                    </div>
+                </div>
 
-</div>
-   <div class="list">
-
-    <a class="item item-thumbnail-left" href="#/app/eventdetail">
-      <img src="img/event/2.jpg">
-      <h2>Pretty Hate Machine</h2>
-      <p>Date :</p>
-      <p>Venue :</p>
-      <p>Detail :</p>
-    </a>
-
-   
-
-</div>
-   <div class="list">
-
-    <a class="item item-thumbnail-left" href="#/app/eventdetail">
-      <img src="img/event/3.jpg">
-      <h2>Pretty Hate Machine</h2>
-      <p>Date :</p>
-      <p>Venue :</p>
-      <p>Detail :</p>
-    </a>
-
-   
-
-</div>
+            </div>
+        </div>
         </div>
     </ion-list>
   </ion-content>

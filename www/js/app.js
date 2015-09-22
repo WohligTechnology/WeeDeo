@@ -100,51 +100,60 @@ angular.module('starter', ['ionic', 'starter.controllers'])
             }
         }).
     state('app.bio', {
-            url: '/bio',
-            views: {
-                'menuContent': {
-                    templateUrl: 'templates/bio.html',
-                    controller: 'BioCtrl'
-                }
+        url: '/bio',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/bio.html',
+                controller: 'BioCtrl'
             }
-        }).
-        state('app.profile', {
-            url: '/profile',
-            views: {
-                'menuContent': {
-                    templateUrl: 'templates/profile.html',
-                    controller: 'ProfileCtrl'
-                }
+        }
+    }).
+    state('app.profile', {
+        url: '/profile',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/profile.html',
+                controller: 'ProfileCtrl'
             }
-        }).  
+        }
+    }).
     state('app.eventdetail', {
-            url: '/eventdetail',
-            views: {
-                'menuContent': {
-                    templateUrl: 'templates/eventdetail.html',
-                    controller: 'EventdetailCtrl'
-                }
+        url: '/eventdetail',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/eventdetail.html',
+                controller: 'EventdetailCtrl'
             }
-        }).  
+        }
+    }).
     state('app.playlist', {
-            url: '/playlist',
-            views: {
-                'menuContent': {
-                    templateUrl: 'templates/playlist.html',
-                    controller: 'PlaylistCtrl'
-                }
+        url: '/playlist',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/playlist.html',
+                controller: 'PlaylistCtrl'
             }
-        }).  
+        }
+    }).
     state('app.videodetail', {
-            url: '/videodetail',
-            views: {
-                'menuContent': {
-                    templateUrl: 'templates/videodetail.html',
-                    controller: 'VideodetailCtrl'
-                }
+        url: '/videodetail',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/videodetail.html',
+                controller: 'VideodetailCtrl'
             }
-        }).
-         state('app.feed', {
+        }
+    }).
+    state('app.playlistvideo', {
+        url: '/playlistvideo',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/playlistvideo.html',
+                controller: 'PlaylistvideoCtrl'
+            }
+        }
+    }).
+    state('app.feed', {
             url: '/feed',
             views: {
                 'menuContent': {

@@ -1,0 +1,39 @@
+<ion-view view-title="Videos">
+    <ion-content>
+    <div class="profile">
+            <div class="profile-bg bg-color">
+               <div class="bg-text">
+                  <p>Playlist</p>
+                   <h4>Weedeo's snowdown Videos</h4>
+                   <p>By Weedeo's Entertainment</p>
+               </div>
+                <div class="profile-pic bio-pic">
+                    <i class="ln-circle-play"></i>
+                </div>
+            </div>
+        </div>
+        <br>
+<div class="pads">
+    <p>9 Video</p>
+</div>
+        <div class="related-video padzero">
+
+            <div class="all-video">
+                <div class="row" ng-repeat="item in video" ui-sref="app.videodetail" >
+                    <div class="col col-33">
+                        <div class="image-hold" ng-style="{'background-image':'url({{item.image}})'}">
+
+                        </div>
+                    </div>
+                    <div class="col col-67">
+                        <h4>{{item.title}}</h4>
+                        <p>{{item.cat}}</p>
+                        <p>{{item.view}}k views</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

@@ -35,6 +35,35 @@ angular.module('starter.controllers', [])
 
         //            ******** end *******
 
+        //    ******* custom json ******
+
+        $scope.video = [{
+            image: "img/video/2.jpg",
+            title: "Disnei Beauty and the Beast",
+            date: "25, March, 2015",
+            venue: "Royal Rose Club",
+            detail: "Alpherta CA"
+  }, {
+            image: "img/video/3.jpg",
+            title: "Bollywud Dream Tours",
+            date: "25, March, 2016",
+            venue: "Sahara Rose Club",
+            detail: "Athens GA"
+  }, {
+            image: "img/video/4.jpg",
+            title: "Mumbai Filmcity Tours",
+            date: "25, March, 2017",
+            venue: "Sahara Rose Club",
+            detail: "High Street"
+  }, {
+            image: "img/video/5.jpg",
+            title: "KidZania Inn",
+            date: "25, March, 2018",
+            venue: "Sahara Rose Club",
+            detail: "Low Street"
+  }];
+
+        //***** end *****
 
     })
     .controller('LoginCtrl', function ($scope) {
@@ -66,30 +95,83 @@ angular.module('starter.controllers', [])
 
     })
     .controller('PlaylistCtrl', function ($scope) {
+        $scope.playlist = [{
+            image: "img/video/2.jpg",
+            title: "Weedeo's snowdown Videos",
+            video: "42",
+            view: "64"
+  }, {
+            image: "img/video/8.jpg",
+            title: "Gaming Videos",
+            video: "45",
+            view: "655"
+  }, {
+            image: "img/video/4.jpg",
+            title: "Music Trailor",
+            video: "9",
+            view: "4242"
+  }, {
+            image: "img/video/3.jpg",
+            title: "Movies official trailer Gaming Videos",
+            video: "18",
+            view: "648"
+  }];
+
 
     })
     .controller('VideodetailCtrl', function ($scope, $ionicModal, $timeout) {
 
-        $ionicModal.fromTemplateUrl('templates/videoinfo.html', function ($ionicModal) {
-            $scope.modal = $ionicModal;
-        }, {
-            // Use our scope for the scope of the modal to keep it simple
-            scope: $scope,
-            // The animation we want to use for the modal entrance
-            animation: 'slide-in-up'
-        });
+        $scope.video = [{
+            image: "img/video/2.jpg",
+            title: "Weedeo's snowdown official trailer",
+            cat: "Movie Clip",
+            view: "64"
+  }, {
+            image: "img/video/3.jpg",
+            title: "Weedeo's Blackhat official trailer",
+            cat: "Movie trailer Clip",
+            view: "655"
+  }, {
+            image: "img/video/4.jpg",
+            title: "Music Concert",
+            cat: "Media & Entertainment",
+            view: "4242"
+  }, {
+            image: "img/video/5.jpg",
+            title: "Weedeo's Music Concert",
+            cat: "Music Trailor",
+            view: "648"
+  }];
 
 
-        $scope.openModal = function () {
-            console.log('Opening Modal');
-            $scope.modal.show();
-        };
-        $scope.closeModal = function () {
-            console.log('close Modal');
-            $scope.modal.hide();
-        };
 
 
+
+
+    })
+    .controller('PlaylistvideoCtrl', function ($scope, $ionicModal, $timeout) {
+
+        $scope.video = [{
+            image: "img/video/2.jpg",
+            title: "Weedeo's snowdown official trailer",
+            cat: "Movie Clip",
+            view: "64"
+  }, {
+            image: "img/video/3.jpg",
+            title: "Weedeo's Blackhat official trailer",
+            cat: "Movie trailer Clip",
+            view: "655"
+  }, {
+            image: "img/video/4.jpg",
+            title: "Music Concert",
+            cat: "Media & Entertainment",
+            view: "4242"
+  }, {
+            image: "img/video/5.jpg",
+            title: "Weedeo's Music Concert",
+            cat: "Music Trailor",
+            view: "648"
+  }];
 
 
 
@@ -134,4 +216,36 @@ angular.module('starter.controllers', [])
     })
 
 
-.controller('EventCtrl', function ($scope, $stateParams) {});
+.controller('EventCtrl', function ($scope, $stateParams) {
+    
+    
+        //    ******* custom json ******
+
+        $scope.video = [{
+            image: "img/video/2.jpg",
+            title: "Disnei Beauty and the Beast",
+            date: "25, March, 2015",
+            venue: "Royal Rose Club",
+            detail: "Alpherta CA"
+  }, {
+            image: "img/video/3.jpg",
+            title: "Bollywud Dream Tours",
+            date: "25, March, 2016",
+            venue: "Sahara Rose Club",
+            detail: "Athens GA"
+  }, {
+            image: "img/video/4.jpg",
+            title: "Mumbai Filmcity Tours",
+            date: "25, March, 2017",
+            venue: "Sahara Rose Club",
+            detail: "High Street"
+  }, {
+            image: "img/video/5.jpg",
+            title: "KidZania Inn",
+            date: "25, March, 2018",
+            venue: "Sahara Rose Club",
+            detail: "Low Street"
+  }];
+
+        //***** end *****
+});

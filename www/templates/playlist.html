@@ -1,49 +1,18 @@
 <ion-view view-title="Playlist">
     <ion-content>
 
-        <div class="card video-category">
+        <div class="card video-category" ng-repeat="item in playlist">
             <div class="item item-text-wrap">
                 <figure>
-                    <a href="#/app/videodetail"><img src="img/video/2.jpg" class="full-image"></a>
+                    <a href="#/app/playlistvideo"><img ng-src="{{item.image}}" class="full-image"></a>
                 </figure>
                 <div class="cat-name ">
                     <div class="evnt-det pull-right">
                         <i class="ion-heart "></i>
-                        <span>2525 k</span>
+                        <span>{{item.view}} k</span>
                     </div>
-                    <h4>Moviews Videos</h4>
-                    <p>9 Video</p>
-                </div>
-            </div>
-        </div>
-        <div class="card video-category">
-            <div class="item item-text-wrap">
-                <figure>
-                    <a href="#/app/videodetail"><img src="img/video/8.jpg" class="full-image"></a>
-                </figure>
-                <div class="cat-name">
-                    <div class="evnt-det pull-right">
-                        <i class="ion-heart "></i>
-                        <span>545 k</span>
-                    </div>
-                    <h4>Gaming Videos</h4>
-                    <p>15 Video</p>
-
-                </div>
-            </div>
-        </div>
-        <div class="card video-category">
-            <div class="item item-text-wrap">
-                <figure>
-                    <a href="#/app/videodetail"><img src="img/video/4.jpg" class="full-image"></a>
-                </figure>
-                <div class="cat-name">
-                    <div class="evnt-det pull-right">
-                        <i class="ion-heart "></i>
-                        <span>233 k</span>
-                    </div>
-                    <h4>Breakout Star</h4>
-                    <p>108 Video</p>
+                    <h4>{{item.title}}</h4>
+                    <p>{{item.video}} Video</p>
                 </div>
             </div>
         </div>
