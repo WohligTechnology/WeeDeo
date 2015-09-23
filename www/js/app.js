@@ -89,6 +89,16 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                     controller: 'NotificationCtrl'
                 }
             }
+        })     
+		
+		.state('app.gallery-inner', {
+            url: '/gallery-inner',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/gallery-inner.html',
+                    controller: 'GalleryInnerCtrl'
+                }
+            }
         })
         .state('app.setting', {
             url: '/setting',
