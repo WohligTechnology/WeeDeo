@@ -100,17 +100,17 @@ angular.module('starter.controllers', ['ion-gallery'])
 
 	$scope.items = [{
 
-				"src": 'http://www.wired.com/images_blogs/rawfile/2013/11/offset_WaterHouseMarineImages_62652-2-660x440.jpg',
+				"src": 'img/video/1.png',
   }, {
-				"src": 'http://www.wired.com/images_blogs/rawfile/2013/11/offset_WaterHouseMarineImages_62652-2-660x440.jpg',
+				"src": 'img/video/2.jpg',
   }, {
-				"src": 'http://www.wired.com/images_blogs/rawfile/2013/11/offset_WaterHouseMarineImages_62652-2-660x440.jpg',
+				"src": 'img/video/3.jpg',
   }, {
-				"src": 'http://www.wired.com/images_blogs/rawfile/2013/11/offset_WaterHouseMarineImages_62652-2-660x440.jpg',
+				"src": 'img/video/4.jpg',
 		}, {
-				"src": 'http://www.wired.com/images_blogs/rawfile/2013/11/offset_WaterHouseMarineImages_62652-2-660x440.jpg',
+				"src": 'img/video/5.jpg',
 		}, {
-				"src": 'http://www.wired.com/images_blogs/rawfile/2013/11/offset_WaterHouseMarineImages_62652-2-660x440.jpg',
+				"src": 'img/video/6.jpg',
 		}
 				   ]
 		//$scope.items = _.chunk($scope.items, 3);
