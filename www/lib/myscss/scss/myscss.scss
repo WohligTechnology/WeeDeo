@@ -148,7 +148,7 @@ a:hover {
 
 .overlay-box {
     background: $login-bg-image;
-    background-size: cover;
+    background-size: cover !important;
     position: relative;
     min-height: 100px;
     max-height: 200px;
@@ -199,6 +199,7 @@ a:hover {
 //************ Side menu Scss ***********
 .bg-img {
     background: $bg-menu;
+    background-size: cover;
     .bar-calm {
         background-image: none;
         color: $light;
