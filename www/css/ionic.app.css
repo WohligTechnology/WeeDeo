@@ -478,6 +478,9 @@ a, a:hover {
     margin: 0;
     text-transform: capitalize; }
 
+.head-bg {
+  background: #000102; }
+
 .bg-text {
   position: absolute;
   left: 70%;
