@@ -7,7 +7,7 @@ angular.module('starter.controllers', ['ion-gallery'])
 
 		//        ***** tabchange ****
 
-		$scope.tab = 'latest';
+		$scope.tab = 'video';
 		$scope.classa = 'active';
 		$scope.classb = '';
 		$scope.classc = '';
