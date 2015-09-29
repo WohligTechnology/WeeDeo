@@ -17,9 +17,9 @@ $font-family-light-sans-serif: "Lato",
 "HelveticaNeue-Light",
 "Roboto-Light",
 "Segoe UI-Light";
-$login-bg-image:(url('../img/login/2.jpg')) no-repeat center center;
-$signup-bg-image:(url('../img/login/1.jpg')) no-repeat center center;
-$bg-menu:(url('../img/background/1.jpg')) no-repeat center center;
+$login-bg-image:url('../img/login/2.jpg') no-repeat center center;
+$signup-bg-image:url('../img/login/1.jpg') no-repeat center center;
+$bg-menu:url('../img/background/1.jpg') no-repeat center center;
 //@include background-image(url("/images/a.png") center no-repeat
 $base-color: #4a606f !default;
 $input-color: $base-color !default;
