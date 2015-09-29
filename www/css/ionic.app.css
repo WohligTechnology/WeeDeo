@@ -44,7 +44,7 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
   src: url(../fonts/SourceSansPro-Semibold.ttf);
   font-weight: 600; }
 
-.tab-item.active {
+.tabs-striped.tabs-color-light .tab-item.active, .tabs-striped.tabs-color-light .tab-item.activated {
   border: 0 solid #f4376a !important; }
 
 .bar-calm {
@@ -174,17 +174,18 @@ a, a:hover {
         font-size: 20px;
         vertical-align: sub; }
 
-.active {
-  color: #fff;
-  border: 0 solid #fff;
-  border-width: 0px 0px 3px 0px !important; }
-
 .tabs a span {
   font-size: 14px;
   font-weight: 300;
   text-transform: uppercase; }
 .tabs h4 {
   color: #fff; }
+.tabs .active {
+  color: #fff;
+  border: 0 solid #fff;
+  border-width: 0px 0px 3px 0px !important; }
+.tabs .activated {
+  border-color: #f4376a; }
 
 .event .list {
   margin: -1px 0px !important; }

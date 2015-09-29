@@ -16,8 +16,20 @@
 
   <ion-content class="has-tabs-top">
 <div class="video" ng-show="tab=='video'" >
-   <div class="video-set">
-       <figure>
+   <div class="video-set animated bounceInLeft">
+       <figure ui-sref="app.videodetail">
+           <img src="img/video/1.png" class="full-image">
+           <div class="img-layer">
+              <span>3.00</span>
+              <div class="bottom-txt">
+               <h4>Video Name</h4>
+               <p>4k View</p>
+               </div>
+           </div>
+       </figure>
+   </div>
+      <div class="video-set animated bounceInRight">
+       <figure ui-sref="app.videodetail">
            <img src="img/video/1.png" class="full-image">
            <div class="img-layer">
               <span>3.00</span>

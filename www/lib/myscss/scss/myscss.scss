@@ -17,9 +17,10 @@ $font-family-light-sans-serif: "Lato",
 "HelveticaNeue-Light",
 "Roboto-Light",
 "Segoe UI-Light";
-$login-bg-image:url('../img/login/2.jpg') no-repeat center center;
-$signup-bg-image:url('../img/login/1.jpg') no-repeat center center;
-$bg-menu:url('../img/background/1.jpg') no-repeat center center;
+$login-bg-image:(url('../img/login/2.jpg')) no-repeat center center;
+$signup-bg-image:(url('../img/login/1.jpg')) no-repeat center center;
+$bg-menu:(url('../img/background/1.jpg')) no-repeat center center;
+//@include background-image(url("/images/a.png") center no-repeat
 $base-color: #4a606f !default;
 $input-color: $base-color !default;
 $button-border-radius: 0px !default;
@@ -64,6 +65,10 @@ $transition-time) {
 // *** End *******
 
 //***** Font Famliy ********
+
+
+
+
 @font-face {
     font-family: 'Source Sans Pro';
     src: url(../fonts/SourceSansPro-Regular.ttf);
@@ -94,10 +99,10 @@ $transition-time) {
     font-weight: 600;
 }
 //******** tab *******
-.tab-item.active {
-    border: 0 solid $positive !important;
-}
 
+.tabs-striped.tabs-color-light .tab-item.active, .tabs-striped.tabs-color-light .tab-item.activated{
+        border: 0 solid $positive !important;
+}
 
 .bar-calm{
     border-color:$calm !important;
@@ -279,12 +284,6 @@ a:hover {
     }
 }
 
-.active {
-    color: $light;
-    border: 0 solid $light;
-    border-width: 0px 0px 3px 0px !important;
-}
-
 .tabs {
     a {
         span {
@@ -295,6 +294,14 @@ a:hover {
     }
     h4{
         color:$light;
+    }
+      .active {
+    color: $light;
+    border: 0 solid $light;
+    border-width: 0px 0px 3px 0px !important;
+}
+    .activated{
+        border-color:$positive;
     }
 }
 .event {
@@ -380,8 +387,7 @@ a:hover {
         background: -ms-linear-gradient(rgba(119, 81, 210, 0) 55%, rgba(22, 22, 22, 1));
         background: -o-linear-gradient(rgba(119, 81, 210, 0) 55%, rgba(22, 22, 22, 1));
         position: relative;
-        @include transition(all,
-        0.5s);
+        @include transition(all,0.5s);
         position: absolute;
         top: 0;
         width: 100%;
