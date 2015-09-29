@@ -690,11 +690,14 @@ a:hover {
 .head-bg{
     background: #000102;
 }
+
+
 .bg-text {
     position: absolute;
     left: 70%;
     top: 50%;
-    transform: translate(-50%,-50%);
+//    transform: translate(-50%,-50%);
+    transform:(translateY(-50%) translateX(-50%));
     width: 100%;
     color:$light;
     h4{
