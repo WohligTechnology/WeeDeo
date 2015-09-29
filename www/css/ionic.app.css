@@ -483,6 +483,9 @@ a, a:hover {
 .head-bg {
   background: #000102; }
 
+.gallery-slide-view {
+  border-color: transparent !important; }
+
 .bg-text {
   position: absolute;
   left: 70%;
