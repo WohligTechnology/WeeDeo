@@ -6,9 +6,9 @@ var imgpath = adminurl + "uploadfile/resize?file=";
 
 angular.module('starter.services', [])
 
-.factory('MyServices', function($http, $window) {
+.factory('MyServices', function ($http, $window) {
     return {
-        makeactive: function(menuname) {
+        makeactive: function (menuname) {
             for (var i = 0; i < navigation.length; i++) {
                 if (navigation[i].name == menuname) {
                     navigation[i].classis = "active";
@@ -18,17 +18,29 @@ angular.module('starter.services', [])
             }
             return menuname;
         },
-        saveUser: function(data, callback) {
+        saveUser: function (data, callback) {
             $http({
                 url: adminurl + 'user/save',
                 method: 'POST',
                 data: data
             }).success(callback);
         },
-        setUser: function(data) {
+        getsearchresults: function (search, callback, err) {
+            $http.get('https://www.googleapis.com/youtube/v3/search', {
+                params: {
+                    key: 'AIzaSyBcHbwhmLeZdOYgIhmZlpmQ_Rg2F40V3OU',
+                    type: 'video',
+                    maxResults: '4',
+                    part: 'id,snippet',
+                    fields: 'items/id,items/snippet/title,items/snippet/description,items/snippet/thumbnails/default,items/snippet/channelTitle',
+                    q: search
+                }
+            }).success(callback).error(err)
+        },
+        setUser: function (data) {
             $.jStorage.set("user", data);
         },
-        getUser: function() {
+        getUser: function () {
             return $.jStorage.get("user");
         }
     };

@@ -1,10 +1,10 @@
 angular.module('starter.controllers', ['ion-gallery'])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function ($scope, $ionicModal, $timeout) {
 
 })
 
-.controller('HomeCtrl', function($scope, $ionicScrollDelegate, $stateParams, $http) {
+.controller('HomeCtrl', function ($scope, $ionicScrollDelegate, $stateParams, $http, MyServices) {
 
     //        ***** tabchange ****
 
@@ -12,7 +12,7 @@ angular.module('starter.controllers', ['ion-gallery'])
     $scope.classa = 'active';
     $scope.classb = '';
     $scope.classc = '';
-    $scope.tabchange = function(tab, a) {
+    $scope.tabchange = function (tab, a) {
         //        console.log(tab);
         $scope.tab = tab;
         if (a == 1) {
@@ -80,40 +80,39 @@ angular.module('starter.controllers', ['ion-gallery'])
     //         console.log(err);
     //       });
 
-    $http.get('https://www.googleapis.com/youtube/v3/search', {
-            params: {
-                key: 'AIzaSyBcHbwhmLeZdOYgIhmZlpmQ_Rg2F40V3OU',
-                type: 'video',
-                maxResults: '50',
-                part: 'id,snippet',
-                fields: 'items/id,items/snippet/title,items/snippet/description,items/snippet/thumbnails/default,items/snippet/channelTitle',
-                q: ""
+    $scope.searchedVideos = [];
+    MyServices.getsearchresults("shirley setia",
+        function (data) {
+            if (data) {
+                console.log(data);
+                $scope.searchedVideos = data.items;
             }
-        })
-        .success(function(data) {
-            console.log(data);
-        })
-        .error(function() {
-            console.log('Search error');
+        },
+        function (err) {
+            if (err) {
+                console.log(err);
+            }
         });
+
+    //    <div youtube code="items.videourl"></div>
 
     //***** end *****
 })
 
-.controller('LoginCtrl', function($scope) {
+.controller('LoginCtrl', function ($scope) {
 
     })
-    .controller('SignupCtrl', function($scope) {
+    .controller('SignupCtrl', function ($scope) {
 
     })
 
-.controller('VideoCtrl', function($scope) {
+.controller('VideoCtrl', function ($scope) {
 
     })
-    .controller('PickedCtrl', function($scope) {
+    .controller('PickedCtrl', function ($scope) {
 
     })
-    .controller('GalleryCtrl', function($scope) {
+    .controller('GalleryCtrl', function ($scope) {
         $scope.gallery = [{
             image: "img/video/2.jpg",
             title: "Weedeo's snowdown Photos"
@@ -130,7 +129,7 @@ angular.module('starter.controllers', ['ion-gallery'])
 
     })
 
-.controller('GalleryInnerCtrl', function($scope) {
+.controller('GalleryInnerCtrl', function ($scope) {
 
     $scope.items = [{
 
@@ -149,19 +148,19 @@ angular.module('starter.controllers', ['ion-gallery'])
         //$scope.items = _.chunk($scope.items, 3);
 })
 
-.controller('NotificationCtrl', function($scope) {
+.controller('NotificationCtrl', function ($scope) {
 
     })
-    .controller('SettingCtrl', function($scope) {
+    .controller('SettingCtrl', function ($scope) {
 
     })
-    .controller('ProfileCtrl', function($scope) {
+    .controller('ProfileCtrl', function ($scope) {
 
     })
-    .controller('EventdetailCtrl', function($scope) {
+    .controller('EventdetailCtrl', function ($scope) {
 
     })
-    .controller('PlaylistCtrl', function($scope) {
+    .controller('PlaylistCtrl', function ($scope) {
         $scope.playlist = [{
             image: "img/video/2.jpg",
             title: "Weedeo's snowdown Videos",
@@ -186,7 +185,7 @@ angular.module('starter.controllers', ['ion-gallery'])
 
 
     })
-    .controller('VideodetailCtrl', function($scope, $ionicModal, $timeout) {
+    .controller('VideodetailCtrl', function ($scope, $ionicModal, $timeout) {
 
         $scope.video = [{
             image: "img/video/2.jpg",
@@ -216,7 +215,7 @@ angular.module('starter.controllers', ['ion-gallery'])
 
 
     })
-    .controller('PlaylistvideoCtrl', function($scope, $ionicModal, $timeout) {
+    .controller('PlaylistvideoCtrl', function ($scope, $ionicModal, $timeout) {
 
         $scope.video = [{
             image: "img/video/2.jpg",
@@ -246,14 +245,14 @@ angular.module('starter.controllers', ['ion-gallery'])
 
 
     })
-    .controller('FeedCtrl', function($scope, $ionicScrollDelegate, $stateParams) {
+    .controller('FeedCtrl', function ($scope, $ionicScrollDelegate, $stateParams) {
         //        ***** tabchange ****
 
         $scope.tab = 'twitter';
         $scope.classa = 'active';
         $scope.classb = '';
 
-        $scope.tabchange = function(tab, a) {
+        $scope.tabchange = function (tab, a) {
             //        console.log(tab);
             $scope.tab = tab;
             if (a == 1) {
@@ -278,12 +277,12 @@ angular.module('starter.controllers', ['ion-gallery'])
         //            ******** end *******
 
     })
-    .controller('BioCtrl', function($scope) {
+    .controller('BioCtrl', function ($scope) {
 
     })
 
 
-.controller('EventCtrl', function($scope, $stateParams) {
+.controller('EventCtrl', function ($scope, $stateParams) {
 
 
     //    ******* custom json ******
