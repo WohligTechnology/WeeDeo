@@ -1,13 +1,13 @@
-<ion-view view-title="All Video">
+<ion-view view-title="{{videoDetails.snippet.channelTitle}}">
     <ion-content>
         <div class="video-set">
-            <iframe width="100%" height="180" src="https://www.youtube.com/embed/HcgJRQWxKnw" frameborder="0" allowfullscreen class="full-image"></iframe>
+            <!-- <iframe width="100%" height="180" src="https://www.youtube.com/embed/HcgJRQWxKnw" frameborder="0" allowfullscreen class="full-image"></iframe> -->
+            <div youtube code="video.id"></div>
         </div>
         <div class="vid-name padding">
-            <h3>
-          The Jungle book official us teaser
-      </h3>
-            <p>9.895.69 views</p>
+            <h3>{{videoDetails.snippet.title}}</h3>
+
+            <p>{{videoDetails.statistics.viewCount | numberWithCommas}} views</p>
         </div>
         <br>
         <div class="profile-det evnt-set text-center">
@@ -17,13 +17,13 @@
                     <div class="col col-33 padzero">
                         <div class="follow">
                             <i class="ln-thumbs-up2"></i>
-                            <p>255k</p>
+                            <p>{{videoDetails.statistics.likeCount | convertTok}}</p>
                         </div>
                     </div>
                     <div class="col col-33 padzero">
                         <div class="follow">
                             <i class="ln-thumbs-down2"></i>
-                            <p>5,216</p>
+                            <p>{{videoDetails.statistics.dislikeCount | convertTok}}</p>
                         </div>
                     </div>
                     <div class="col col-33 padzero">
@@ -41,7 +41,7 @@
         <div class="related-video">
 
             <div class="all-video">
-                <div class="row" ng-repeat="item in video">
+                <!-- <div class="row" ng-repeat="item in video">
                     <div class="col col-33">
                         <div class="image-hold" ng-style="{'background-image':'url({{item.image}})'}">
 
@@ -51,6 +51,19 @@
                         <h4>{{item.title}}</h4>
                         <p>{{item.cat}}</p>
                         <p>{{item.view}}k views</p>
+                    </div>
+                </div> -->
+
+                <div class="row" ng-repeat="videos in relatedVideos" ng-click="refresh(videos.id.videoId);">
+                    <div class="col col-33">
+                        <div class="image-hold" ng-style="{'background-image':'url({{videos.snippet.thumbnails.default.url}})'}">
+
+                        </div>
+                    </div>
+                    <div class="col col-67">
+                        <h4>{{videos.snippet.title}}</h4>
+                        <p>{{videos.snippet.channelTitle}}</p>
+                        <p>{{videos.statistics.viewCount | convertTok}} views</p>
                     </div>
                 </div>
 

@@ -4,15 +4,15 @@
         <div class="card video-category" ng-repeat="item in playlist">
             <div class="item item-text-wrap">
                 <figure>
-                    <a href="#/app/playlistvideo"><img ng-src="{{item.image}}" class="full-image"></a>
+                    <a href="#/app/playlistvideo"><img ng-src="{{item.channelDetails.snippet.thumbnails.high.url}}" class="full-image"></a>
                 </figure>
                 <div class="cat-name ">
-                    <div class="evnt-det pull-right">
+                    <!-- <div class="evnt-det pull-right">
                         <i class="ion-heart "></i>
-                        <span>{{item.view}} k</span>
-                    </div>
-                    <h4>{{item.title}}</h4>
-                    <p>{{item.video}} Video</p>
+                        <span>{{item.statistics.viewCount | convertTok}}</span>
+                    </div> -->
+                    <h4>{{item.channelDetails.snippet.localized.title}}</h4>
+                    <p>{{item.pageInfo.totalResults}} Videos</p>
                 </div>
             </div>
         </div>

@@ -1,5 +1,4 @@
 <ion-view view-title="Home">
-
     <div class="tabs-striped tabs-top tabs-background-calm tabs-color-light">
         <div class="tabs">
             <a class="tab-item {{classa}}" ng-click="tabchange('video',1)">
@@ -13,7 +12,6 @@
             </a>
         </div>
     </div>
-
     <ion-content class="has-tabs-top">
         <div class="video" ng-show="tab=='video'">
             <!--
@@ -44,26 +42,33 @@
 -->
             <div ng-repeat="videos in searchedVideos track by $index" ng-if="searchedVideos.length>0">
                 <div class="video-set animated bounceInLeft" ng-if="$index%2==0">
-                    <figure ui-sref="app.videodetail">
-                        <div youtube code="videos.id.videoId"></div>
+                    <figure ui-sref="app.videodetail({id:videos.id})">
+                        <img ng-src="{{videos.snippet.thumbnails.high.url}}" class="full-image">
+                        <div class="img-layer">
+                            <div class="bottom-txt">
+                                <h4 ng-bind-html="videos.snippet.title"></h4>
+                            </div>
+                        </div>
                     </figure>
                 </div>
                 <div class="video-set animated bounceInRight" ng-if="$index%2!=0">
-                    <figure ui-sref="app.videodetail">
-                        <div youtube code="videos.id.videoId"></div>
+                    <figure ui-sref="app.videodetail({id:videos.id})">
+                        <img ng-src="{{videos.snippet.thumbnails.high.url}}" class="full-image">
+                        <div class="img-layer">
+                            <div class="bottom-txt">
+                                <h4 ng-bind-html="videos.snippet.title"></h4>
+                            </div>
+                        </div>
                     </figure>
                 </div>
             </div>
         </div>
         <div class="event" ng-show="tab=='event'">
-
             <div class="padzero event">
-
                 <div class="all-video list">
-                    <div class="row item" ng-repeat="item in video" ui-sref="app.eventdetail">
+                    <!-- <div class="row item" ng-repeat="item in video" ui-sref="app.eventdetail">
                         <div class="col col-33">
                             <div class="image-hold" ng-style="{'background-image':'url({{item.image}})'}">
-
                             </div>
                         </div>
                         <div class="col col-67">
@@ -72,8 +77,19 @@
                             <p>Venue : {{item.venue}}</p>
                             <p>Detail : {{item.detail}}</p>
                         </div>
+                    </div> -->
+                    <div class="row item" ng-repeat="event in allEvents" ui-sref="app.eventdetail({id:event.id})">
+                        <div class="col col-33">
+                            <div class="image-hold" ng-style="{'background-image':'url({{event.image | serverimage}})'}">
+                            </div>
+                        </div>
+                        <div class="col col-67">
+                            <h2>{{event.name}}</h2>
+                            <p>Date : <span>{{event.startdate | formatDate}}</span></p>
+                            <p>Venue : {{event.venue}}</p>
+                            <p>Detail : {{event.content}}</p>
+                        </div>
                     </div>
-
                 </div>
             </div>
             <!--
@@ -107,28 +123,22 @@
         </div>
         <div class="twitt" ng-show="tab=='Twitt'">
             <div class="list">
-
                 <a class="item item-avatar" href="#">
                     <img src="img/profile/2.jpg">
                     <span>Just Now</span>
                     <h2>Ami Koehler</h2>
                     <p>@dropperidiot</p>
-
                 </a>
                 <p class="twit-txt">Funny thing is, when you string all of these phrases together into a sentence, and multiple sentences to form a paragraph</p>
-
             </div>
             <div class="list">
-
                 <a class="item item-avatar" href="#">
                     <img src="img/profile/3.jpg">
                     <span>Just Now</span>
                     <h2>Ami Koehler</h2>
                     <p>@dropperidiot</p>
-
                 </a>
                 <p class="twit-txt">Funny thing is, when you string all of these phrases together into a sentence, and multiple sentences to form a paragraph</p>
-
             </div>
         </div>
     </ion-content>

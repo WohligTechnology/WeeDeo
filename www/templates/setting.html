@@ -11,32 +11,28 @@
         <div class="padded-form margintp">
             <div class="list">
                 <label class="item item-input">
-                    <input type="text" placeholder="Jessica">
-                    <input type="text" placeholder="Lucy">
-                </label>
-
-                <label class="item item-input">
-                    <input type="email" placeholder="Jessica_Lucy@gmail.com">
+                    <input type="text" placeholder="Jessica" ng-model="userDetails.fname">
+                    <input type="text" placeholder="Lucy" ng-model="userDetails.lname">
                 </label>
                 <label class="item item-input">
-                    <input type="password" placeholder="********">
+                    <input type="email" placeholder="Jessica_Lucy@gmail.com" ng-model="userDetails.email">
                 </label>
                 <label class="item item-input">
-                    <input type="text" onfocus="(this.type='date')" placeholder="26, January 2015">
+                    <input type="date" placeholder="26, January 2015" ng-model="userDetails.dob">
                 </label>
                 <label class="item item-input">
-                    <input type="text" placeholder="Mumbai">
+                    <input type="text" placeholder="Mumbai" ng-model="userDetails.address">
                 </label>
                 <label class="item item-input">
-                    <span class="col-20"><input type="number" placeholder="+91"></span>
-                    <input type="number" placeholder="98-200-252-00">
+                    <span class="col-20"><input type="tel" placeholder="+91" ng-model="userDetails.countrycode"></span>
+                    <input type="tel" placeholder="98-200-252-00" ng-model="userDetails.contact">
                 </label>
             </div>
-
         </div>
         <div class="padded-top">
-            <button class="button button-positive button-block">Save <i class="icon ln-arrow-right5 padd-left"></i></button>
-
+            <button class="button button-positive button-block" ng-click="editProfile();">Save
+                <i class="icon ln-arrow-right5 padd-left"></i>
+            </button>
         </div>
     </ion-content>
 </ion-view>

@@ -1,46 +1,37 @@
 <ion-view view-title="Sign Up">
-
-  <ion-nav-bar class="bar-transparent"></ion-nav-bar>
-
-  <ion-content class="no-header">
-    <div class="overlay-boxtwo">
-      <div class="overlay-color head-bg"></div>
-      <div class="logo text-center">
-        <img src="img/ionic.png">
-      </div>
-    </div>
-
-    <div class="padded-form">
-      <div class="list">
-       <label class="item item-input">
-          <input type="text" placeholder="First Name">
-          <input type="text" placeholder="Last Name">
-        </label>
-<!--
-        <label class="item item-input">
-          
-        </label>
--->
-        <label class="item item-input">
-          <input type="email" placeholder="Email Address">
-        </label>
-        <label class="item item-input">
-          <input type="password" placeholder="Choose a Password">
-        </label>
-        <label class="item item-input">
-          <span class="col-20"><input type="number" placeholder="+1"></span><input type="number" placeholder="Phone Number">
-        </label>
-      </div>
-        <div class="text-right padding-horizontal">
-        All Ready have an account ? <a href="#/login" class="positive">Sign In</a>
-      </div>
-    </div>
-
-    <div class="padded-top">
-        <button class="button button-positive button-block" ui-sref="app.home">Get started   <i class="icon ln-arrow-right5 padd-left"></i></button>
-        
-    </div>
-
-  </ion-content>
+    <ion-nav-bar class="bar-transparent"></ion-nav-bar>
+    <ion-content class="no-header">
+        <div class="overlay-boxtwo">
+            <div class="overlay-color head-bg"></div>
+            <div class="logo text-center">
+                <img src="img/ionic.png">
+            </div>
+        </div>
+        <div class="padded-form">
+            <div class="list">
+                <label class="item item-input">
+                    <input type="text" placeholder="First Name" ng-model="user.fname" ng-class="allvalidation[0].validation" required>
+                    <input type="text" placeholder="Last Name" ng-model="user.lname" ng-class="allvalidation[1].validation" required>
+                </label>
+                <label class="item item-input">
+                    <input type="email" placeholder="Email Address" ng-model="user.email" ng-class="allvalidation[2].validation" required>
+                </label>
+                <label class="item item-input">
+                    <input type="password" placeholder="Choose a Password" ng-model="user.password" ng-class="allvalidation[3].validation" required>
+                </label>
+                <label class="item item-input">
+                    <span class="col-20"><input type="tel" placeholder="+1" ng-model="user.counrycode" ng-class="allvalidation[4].validation" required></span>
+                    <input type="tel" placeholder="Phone Number" ng-model="user.contact" ng-class="allvalidation[5].validation" required>
+                </label>
+            </div>
+            <div class="text-right padding-horizontal">
+                Already have an account ? <a href="#/login" class="positive">Sign In</a>
+            </div>
+        </div>
+        <div class="padded-top">
+            <button class="button button-positive button-block" ng-click="signUp();">Get started
+                <i class="icon ln-arrow-right5 padd-left"></i>
+            </button>
+        </div>
+    </ion-content>
 </ion-view>
-

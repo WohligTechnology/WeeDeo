@@ -4,6 +4,17 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
+var formvalidation = function(allvalidation) {
+    var isvalid2 = true;
+    for (var i = 0; i < allvalidation.length; i++) {
+        if (allvalidation[i].field == "" || !allvalidation[i].field || allvalidation[i].field == "Please select" || allvalidation[i].field == "Please Select") {
+            allvalidation[i].validation = "ng-dirty";
+            isvalid2 = false;
+        }
+    }
+    return isvalid2;
+}
+
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 .run(function($ionicPlatform) {
@@ -28,7 +39,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 })
 
 .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
-    delete $httpProvider.defaults.headers.common['X-Requested-With'];
+    // delete $httpProvider.defaults.headers.common['X-Requested-With'];
+    $httpProvider.defaults.withCredentials = true;
     $stateProvider
 
         .state('app', {
@@ -98,7 +110,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         })
 
     .state('app.gallery-inner', {
-            url: '/gallery-inner',
+            url: '/gallery-inner/:id',
             views: {
                 'menuContent': {
                     templateUrl: 'templates/gallery-inner.html',
@@ -134,7 +146,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
     }).
     state('app.eventdetail', {
-        url: '/eventdetail',
+        url: '/eventdetail/:id',
         views: {
             'menuContent': {
                 templateUrl: 'templates/eventdetail.html',
@@ -152,7 +164,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
     }).
     state('app.videodetail', {
-        url: '/videodetail',
+        url: '/videodetail/:id',
         views: {
             'menuContent': {
                 templateUrl: 'templates/videodetail.html',
@@ -207,6 +219,71 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
                     scope.url = $sce.trustAsResourceUrl("http://www.youtube.com/embed/" + newVal);
                 }
             });
+        }
+    };
+})
+
+.filter('convertTok', function() {
+    return function(rep) {
+        rep = rep + ''; // coerce to string
+        if (rep < 1000) {
+            return rep; // return the same number
+        }
+        if (rep < 10000) { // place a comma between
+            return rep.charAt(0) + ',' + rep.substring(1);
+        }
+        // divide and format
+        return (rep / 1000).toFixed(rep % 1000 != 0) + 'k';
+    };
+})
+
+.filter('numberWithCommas', function() {
+    return function(x) {
+        if (x)
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        else
+            return "";
+    };
+})
+
+.filter('serverimage', function() {
+    return function(image) {
+        if (image && image != null) {
+            return adminimage + image;
+        } else {
+            return undefined;
+        }
+    };
+})
+
+.filter('formatDate', function($filter) {
+    return function(date) {
+        if (date && date != null) {
+            return $filter('date')(new Date(date), "dd MMM, yyyy");
+        } else {
+            return "";
+        }
+    };
+})
+
+.filter('formatTime', function($filter) {
+    return function(time) {
+        if (time) {
+            var time = time;
+
+            var time = time.split(':');
+
+            var hours = Number(time[0]);
+            var minutes = Number(time[1]);
+            var seconds = Number(time[2]);
+
+            var timeValue = "" + ((hours > 12) ? hours - 12 : hours);
+            timeValue += (minutes < 10) ? ":0" + minutes : ":" + minutes;
+            // timeValue += (seconds < 10) ? ":0" + seconds : ":" + seconds;
+            timeValue += (hours >= 12) ? " PM" : " AM";
+            return timeValue;
+        } else {
+            return "";
         }
     };
 })

@@ -64,19 +64,15 @@ $transition-time) {
 
 // *** End *******
 // border radius
-
 @mixin border-radius($radius) {
-  -webkit-border-radius: $radius;
-     -moz-border-radius: $radius;
-      -ms-border-radius: $radius;
-          border-radius: $radius;
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
 }
+
 // end
 //***** Font Famliy ********
-
-
-
-
 @font-face {
     font-family: 'Source Sans Pro';
     src: url(../fonts/SourceSansPro-Regular.ttf);
@@ -106,14 +102,15 @@ $transition-time) {
     src: url(../fonts/SourceSansPro-Semibold.ttf);
     font-weight: 600;
 }
-//******** tab *******
 
-.tabs-striped.tabs-color-light .tab-item.active, .tabs-striped.tabs-color-light .tab-item.activated{
-        border: 0 solid $positive !important;
+//******** tab *******
+.tabs-striped.tabs-color-light .tab-item.active,
+.tabs-striped.tabs-color-light .tab-item.activated {
+    border: 0 solid $positive !important;
 }
 
-.bar-calm{
-    border-color:$calm !important;
+.bar-calm {
+    border-color: $calm !important;
 }
 
 .placeholder-icon {
@@ -231,7 +228,7 @@ a:hover {
         a {
             color: $light;
             background-color: $positive;
-//            border-radius: 20px;
+            //            border-radius: 20px;
             @include border-radius(20px);
             font-size: 12px;
             position: absolute;
@@ -249,7 +246,7 @@ a:hover {
         img {
             text-align: center;
             margin: 0 auto;
-//            border-radius: 100%;
+            //            border-radius: 100%;
             @include border-radius(100%);
             width: 95px;
             height: 9 0px;
@@ -267,12 +264,11 @@ a:hover {
             margin-top: 15px;
         }
     }
-    .custom-bar{
-          .bar {
-        background: $menu-bg;
-    } 
+    .custom-bar {
+        .bar {
+            background: $menu-bg;
+        }
     }
- 
     .menu-list {
         .item {
             background: $menu-bg !important;
@@ -302,29 +298,30 @@ a:hover {
             text-transform: uppercase;
         }
     }
-    h4{
-        color:$light;
+    h4 {
+        color: $light;
     }
-      .active {
-    color: $light;
-    border: 0 solid $light;
-    border-width: 0px 0px 3px 0px !important;
-}
-    .activated{
-        border-color:$positive;
+    .active {
+        color: $light;
+        border: 0 solid $light;
+        border-width: 0px 0px 3px 0px !important;
+    }
+    .activated {
+        border-color: $positive;
     }
 }
+
 .event {
     .list {
         margin: -1px 0px !important;
         .item {
             padding: 10px 0px 10px 0px;
             img {
-//                border-radius: 4px;
+                //                border-radius: 4px;
                 @include border-radius(4px);
             }
             h2 {
-                margin:0;
+                margin: 0;
                 font-size: 15px;
                 color: $positive;
             }
@@ -332,7 +329,6 @@ a:hover {
                 font-size: 13px;
                 margin: 0px 0px;
                 font-weight: 300;
-           
             }
         }
     }
@@ -361,7 +357,7 @@ a:hover {
                 max-height: 42px;
                 width: 100%;
                 height: 100%;
-//                border-radius: 0%;
+                //                border-radius: 0%;
                 @include border-radius(0%);
             }
             span {
@@ -399,7 +395,8 @@ a:hover {
         background: -ms-linear-gradient(rgba(119, 81, 210, 0) 55%, rgba(22, 22, 22, 1));
         background: -o-linear-gradient(rgba(119, 81, 210, 0) 55%, rgba(22, 22, 22, 1));
         position: relative;
-        @include transition(all,0.5s);
+        @include transition(all,
+        0.5s);
         position: absolute;
         top: 0;
         width: 100%;
@@ -447,15 +444,14 @@ a:hover {
             img {
                 width: 70px;
                 height: 70px;
-//                border-radius: 100%;
+                //                border-radius: 100%;
                 @include border-radius(100%);
                 border: 3px solid $light;
             }
         }
     }
-    .bg-color{
-      background-color: #00BBAB;
-
+    .bg-color {
+        background-color: #00BBAB;
     }
 }
 
@@ -512,7 +508,7 @@ a:hover {
     i {
         background-color: $positive;
         color: $light;
-//        border-radius: 100%;
+        //        border-radius: 100%;
         @include border-radius(100%);
         font-size: 20px;
         padding: 13px;
@@ -641,7 +637,7 @@ a:hover {
 
 .vid-pic {
     img {
-//        border-radius: 100%;
+        //        border-radius: 100%;
         @include border-radius(100%);
         width: 100%;
         height: 46px;
@@ -669,7 +665,8 @@ a:hover {
 .paddingtp {
     padding-top: 22px !important;
 }
-        .image-hold{
+
+.image-hold {
     position: relative;
     top: 0px;
     left: 10px;
@@ -682,11 +679,11 @@ a:hover {
     background-image: url("../img/video/3.jpg");
     background-repeat: no-repeat;
     background-color: #000;
-        }
-.related-video {
-        padding-top: 15px;
-    .all-video {
+}
 
+.related-video {
+    padding-top: 15px;
+    .all-video {
         h4 {
             font-size: 14px;
             margin: 0;
@@ -702,42 +699,53 @@ a:hover {
         }
     }
 }
-.head-bg{
+
+.head-bg {
     background: #000102;
 }
 
-.gallery-slide-view{
+.gallery-slide-view {
     border-color: transparent !important;
 }
+
 .bg-text {
     position: absolute;
     left: 70%;
     top: 50%;
-    transform: translate(-50%,-50%);
-    -webkit-transform: translate(-50%,-50%);
-    -ms-transform: translate(-50%,-50%);
-    -moz-transform: translate(-50%,-50%);
-    transform:(translateY(-50%) translateX(-50%));
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    transform: (translateY(-50%) translateX(-50%));
     width: 100%;
-    color:$light;
-    h4{
+    color: $light;
+    h4 {
         margin: 0;
         font-weight: 400;
-        color:$light;
+        color: $light;
     }
-    p{
+    p {
         margin: 0;
         font-weight: 300;
     }
 }
-.pads{
+
+.pads {
     padding-left: 20px;
-    p{
+    p {
         margin: 0;
-        
     }
 }
-.positonab{
-        position: absolute;
+
+.positonab {
+    position: absolute;
     right: 5px;
+}
+
+.loading-container .loading {
+    background: rgba(255, 255, 255, 0.89) !important;
+}
+
+.ng-invalid.ng-dirty {
+    border-bottom: 2px solid red !important;
 }

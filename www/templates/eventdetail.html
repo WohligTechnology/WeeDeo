@@ -3,20 +3,26 @@
     <ion-content>
         <div class="profile">
             <div class="profile-bg">
-                <img src="img/event/4.jpg" class="full-image">
+                <!-- <img src="img/event/4.jpg" class="full-image"> -->
+                <img ng-src="{{eventDetail.image | serverimage}}" class="full-image">
 
             </div>
         </div>
         <div class="row padding">
             <div class="col col-80">
-                <div class="evnt-det">
-                    <h5>
-                    Friday Night Fish Fry
-                </h5>
+                <!-- <div class="evnt-det">
+                    <h5>Friday Night Fish Fry</h5>
                     <p>Wooders, Rodgers Park</p>
                     <p>Mumbai.</p>
                     <p>+91 98-200-252-00</p>
                     <a href="www.pintrest.com" target="_blank">www.gohanlove.com</a>
+                </div> -->
+                <div class="evnt-det">
+                    <h5>{{eventDetail.name}}</h5>
+                    <p>{{eventDetail.venue}}</p>
+                    <!-- <p>Mumbai.</p> -->
+                    <p>+91 98-200-252-00</p>
+                    <a href="{{eventDetail.url}}" target="_blank">{{eventDetail.url}}</a>
                 </div>
             </div>
 
@@ -35,13 +41,15 @@
                     <div class="col col-33 ">
                         <div class="follow">
                             <i class="ln-calendar2"></i>
-                            <p>25, March, 2015</p>
+                            <!-- <p>25, March, 2015</p> -->
+                            <p>{{eventDetail.startdate | formatDate}}</p>
                         </div>
                     </div>
                     <div class="col col-33 ">
                         <div class="follow">
                            <i class="ln-clock"></i>
-                            <p>8:00 PM</p>
+                            <!-- <p>8:00 PM</p> -->
+                            <p>{{eventDetail.starttime | formatTime}}</p>
                         </div>
                     </div>
                     <div class="col col-33 ">
@@ -56,8 +64,9 @@
             </div>
         </div>
         <div class="padding evnt-det">
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-             It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+            <!-- <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+             It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p> -->
+             <p>{{eventDetail.content}}</p>
         </div>
     </ion-content>
 </ion-view>

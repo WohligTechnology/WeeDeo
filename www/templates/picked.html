@@ -1,16 +1,38 @@
 <ion-view view-title="My Picked">
-  <ion-content>
-         <div class="video-set">
-       <figure>
-           <img src="img/video/1.png" class="full-image">
-           <div class="img-layer">
-              <span>3.00</span>
-              <div class="bottom-txt">
-               <h4>Video Name</h4>
-               <p>4k View</p>
-               </div>
-           </div>
-       </figure>
-   </div>
-  </ion-content>
+    <ion-content>
+        <!-- <div class="video-set">
+            <figure>
+                <img src="img/video/1.png" class="full-image">
+                <div class="img-layer">
+                    <span>3.00</span>
+                    <div class="bottom-txt">
+                        <h4>Video Name</h4>
+                        <p>4k View</p>
+                    </div>
+                </div>
+            </figure>
+        </div> -->
+        <div ng-repeat="videos in pickedVideos track by $index" ng-if="pickedVideos.length>0">
+            <div class="video-set animated bounceInLeft" ng-if="$index%2==0">
+                <figure ui-sref="app.videodetail({id:videos.id})">
+                    <img ng-src="{{videos.snippet.thumbnails.high.url}}" class="full-image">
+                    <div class="img-layer">
+                        <div class="bottom-txt">
+                            <h4 ng-bind-html="videos.snippet.title"></h4>
+                        </div>
+                    </div>
+                </figure>
+            </div>
+            <div class="video-set animated bounceInRight" ng-if="$index%2!=0">
+                <figure ui-sref="app.videodetail({id:videos.id})">
+                    <img ng-src="{{videos.snippet.thumbnails.high.url}}" class="full-image">
+                    <div class="img-layer">
+                        <div class="bottom-txt">
+                            <h4 ng-bind-html="videos.snippet.title"></h4>
+                        </div>
+                    </div>
+                </figure>
+            </div>
+        </div>
+    </ion-content>
 </ion-view>

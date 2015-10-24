@@ -21,8 +21,10 @@
                 </div>
                 <figure class="img-bg">
                     <a href="#/app/profile" menu-close ><img  src="img/user/1.png"></a>
-                    <figcaption>Twanda Keaton</figcaption>
-                    <p>Web Developer</p>
+                    <figcaption>{{userDetails.name}}</figcaption>
+                    <!-- <figcaption>Twanda Keaton</figcaption> -->
+                    <p ng-if="userDetails.profession">{{userDetails.profession}}</p>
+                    <!-- <p>Web Developer</p> -->
                 </figure>
               
           </div>

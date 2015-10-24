@@ -1,13 +1,13 @@
 <ion-view view-title="Gallery">
-	<div class="bar bar-subheader bar-calm">
-		<h4 class="title">Your Photo Gallery</h4>
-		<div class="profile-pic bio-pic positonab">
-			<i class="ln-sync"></i>
-		</div>
-	</div>
-	<ion-content class="has-subheader">
-		<ion-list>
-			<div class="video-set" ng-repeat="item in gallery">
+    <div class="bar bar-subheader bar-calm">
+        <h4 class="title">Your Photo Gallery</h4>
+        <div class="profile-pic bio-pic positonab">
+            <i class="ln-sync"></i>
+        </div>
+    </div>
+    <ion-content class="has-subheader">
+        <ion-list>
+            <!-- <div class="video-set" ng-repeat="item in gallery">
 				<a href="#/app/gallery-inner" class="">
 					<figure>
 						<img ng-src="{{item.image}}" class="full-image">
@@ -18,7 +18,19 @@
 						</div>
 					</figure>
 				</a>
-			</div>
-		</ion-list>
-	</ion-content>
+			</div> -->
+            <div class="video-set" ng-repeat="gallery in allGalleryCategory">
+                <a ui-sref="app.gallery-inner({id:gallery.id})" class="">
+                    <figure>
+                        <img ng-src="{{gallery.image | serverimage}}" class="full-image">
+                        <div class="img-layer">
+                            <div class="bottom-txt">
+                                <h4>{{gallery.name}}</h4>
+                            </div>
+                        </div>
+                    </figure>
+                </a>
+            </div>
+        </ion-list>
+    </ion-content>
 </ion-view>

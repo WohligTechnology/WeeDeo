@@ -1,26 +1,23 @@
 <ion-view view-title="Event">
-  <ion-content>
-    <ion-list>
-        <div class="padzero event">
-
-            <div class="all-video list">
-                <div class="row item" ng-repeat="item in video" ui-sref="app.eventdetail" >
-                    <div class="col col-33">
-                        <div class="image-hold" ng-style="{'background-image':'url({{item.image}})'}">
-
+    <ion-content>
+        <ion-list>
+            <div class="padzero event">
+                <div class="all-video list">
+                    <div class="row item" ng-repeat="event in allEvents" ui-sref="app.eventdetail({id:event.id})">
+                        <div class="col col-33">
+                            <div class="image-hold" ng-style="{'background-image':'url({{event.image | serverimage}})'}">
+                            </div>
+                        </div>
+                        <div class="col col-67">
+                            <h2>{{event.name}}</h2>
+                            <p>Date : <span>{{event.startdate | formatDate}}</span></p>
+                            <p>Venue : {{event.venue}}</p>
+                            <p>Detail : {{event.content}}</p>
                         </div>
                     </div>
-                    <div class="col col-67">
-                           <h2>{{item.title}}</h2>
-      <p>Date : {{item.date}}</p>
-      <p>Venue : {{item.venue}}</p>
-      <p>Detail : {{item.detail}}</p>
-                    </div>
                 </div>
-
             </div>
-        </div>
-        </div>
-    </ion-list>
-  </ion-content>
+            </div>
+        </ion-list>
+    </ion-content>
 </ion-view>

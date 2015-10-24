@@ -535,6 +535,12 @@ a, a:hover {
   position: absolute;
   right: 5px; }
 
+.loading-container .loading {
+  background: rgba(255, 255, 255, 0.89) !important; }
+
+.ng-invalid.ng-dirty {
+  border-bottom: 2px solid red !important; }
+
 /*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/
