@@ -257,11 +257,11 @@ a, a:hover {
   .video-set figure {
     height: 180px; }
   .video-set .img-layer {
-    height: 180px;
-    background: -webkit-linear-gradient(rgba(119, 81, 210, 0) 55%, #161616);
-    background: -moz-linear-gradient(rgba(119, 81, 210, 0) 55%, #161616);
-    background: -ms-linear-gradient(rgba(119, 81, 210, 0) 55%, #161616);
-    background: -o-linear-gradient(rgba(119, 81, 210, 0) 55%, #161616);
+    height: 100%;
+    background: -webkit-linear-gradient(rgba(63, 81, 181, 0.16) 18%, rgba(50, 64, 143, 0.68));
+    background: -moz-linear-gradient(rgba(63, 81, 181, 0.16) 18%, rgba(50, 64, 143, 0.68));
+    background: -ms-linear-gradient(rgba(63, 81, 181, 0.16) 18%, rgba(50, 64, 143, 0.68));
+    background: -o-linear-gradient(rgba(63, 81, 181, 0.16) 18%, rgba(50, 64, 143, 0.68));
     position: relative;
     -webkit-transition: all 0.5s;
     -moz-transition: all 0.5s;
@@ -269,7 +269,7 @@ a, a:hover {
     -o-transition: all 0.5s;
     transition: all 0.5s;
     position: absolute;
-    top: 0;
+    bottom: 0;
     width: 100%; }
     .video-set .img-layer span {
       background-color: #f4376a;
@@ -284,7 +284,8 @@ a, a:hover {
       .video-set .img-layer .bottom-txt h4 {
         float: left;
         color: #fff;
-        padding-left: 12px; }
+        padding-left: 12px;
+        font-size: 15px; }
       .video-set .img-layer .bottom-txt p {
         float: right;
         font-size: 14px;
