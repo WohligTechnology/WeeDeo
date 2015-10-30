@@ -2,8 +2,9 @@
     <ion-content>
         <div class="profile">
             <div class="profile-bg">
-                <img src="img/background/6.jpg" class="full-image">
-                <div class="profile-pic bio-pic">
+                <img src="img/background/6.jpg" class="full-image" ng-if="!userDetails.coverimage">
+                <img src="{{userDetails.coverimage | indexOfHttp}}" class="full-image" ng-if="userDetails.coverimage">
+                <div class="profile-pic bio-pic" ng-click="picForCover();">
                     <i class="ln-pencil"></i>
                 </div>
             </div>
@@ -25,7 +26,7 @@
                 </label>
                 <label class="item item-input">
                     <span class="col-20"><input type="tel" placeholder="+91" ng-model="userDetails.countrycode"></span>
-                    <input type="tel" placeholder="98-200-252-00" ng-model="userDetails.contact">
+                    <input type="tel" placeholder="9820025200" ng-model="userDetails.contact">
                 </label>
             </div>
         </div>

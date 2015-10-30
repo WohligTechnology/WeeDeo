@@ -40,7 +40,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
     // delete $httpProvider.defaults.headers.common['X-Requested-With'];
-    $httpProvider.defaults.withCredentials = true;
+    $httpProvider.defaults.withCredentials = false;
     $stateProvider
 
         .state('app', {
@@ -173,7 +173,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
     }).
     state('app.playlistvideo', {
-        url: '/playlistvideo',
+        url: '/playlistvideo/:id',
         views: {
             'menuContent': {
                 templateUrl: 'templates/playlistvideo.html',
@@ -202,7 +202,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/login');
+    $urlRouterProvider.otherwise('/app/home');
 })
 
 .directive('youtube', function($sce) {
@@ -217,6 +217,24 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
             scope.$watch('code', function(newVal) {
                 if (newVal) {
                     scope.url = $sce.trustAsResourceUrl("http://www.youtube.com/embed/" + newVal);
+                }
+            });
+        }
+    };
+})
+
+.directive('youtubeplaylist', function($sce) {
+    return {
+        restrict: 'A',
+        scope: {
+            code: '='
+        },
+        replace: true,
+        template: '<iframe id="popup-youtube-player" style="overflow:hidden;width:100%" width="100%" height="175px" src="{{url}}" frameborder="0" allowscriptaccess="always" allowfullscreen="allowfullscreen" mozallowfullscreen="mozallowfullscreen" msallowfullscreen="msallowfullscreen" oallowfullscreen="oallowfullscreen" webkitallowfullscreen="webkitallowfullscreen"></iframe>',
+        link: function(scope) {
+            scope.$watch('code', function(newVal) {
+                if (newVal) {
+                    scope.url = $sce.trustAsResourceUrl("http://www.youtube.com/embed/videoseries?list=" + newVal);
                 }
             });
         }
@@ -250,6 +268,22 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     return function(image) {
         if (image && image != null) {
             return adminimage + image;
+        } else {
+            return undefined;
+        }
+    };
+})
+
+.filter('indexOfHttp', function() {
+    return function(image) {
+        if (image && image != null) {
+            if (image.indexOf("http") != -1) {
+                console.log(image);
+                return image;
+            } else {
+                console.log(adminimage + image);
+                return adminimage + image;
+            }
         } else {
             return undefined;
         }

@@ -1,15 +1,40 @@
-angular.module('starter.controllers', ['ion-gallery'])
+var playlistIds = "";
+angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, MyServices) {
 
     $scope.userDetails = MyServices.getUser();
     console.error($scope.userDetails);
 
+    MyServices.getConfigDetails(function(data) {
+            if (data) {
+                // $ionicLoading.hide();
+                console.log(data);
+                MyServices.setConfig(data);
+            }
+        },
+        function(err) {
+            if (err) {
+                // $ionicLoading.hide();
+                console.log(err);
+            }
+        });
+
 })
 
-.controller('HomeCtrl', function($scope, $ionicScrollDelegate, $stateParams, $http, MyServices, $ionicLoading, $timeout, $filter) {
+.controller('HomeCtrl', function($scope, $ionicScrollDelegate, $stateParams, $http, MyServices, $ionicLoading, $timeout, $filter, $location, $ionicPlatform, $state) {
 
     //        ***** tabchange ****
+
+    if (!$.jStorage.get("user")) {
+        $location.url("/login");
+    }
+
+    $ionicPlatform.registerBackButtonAction(function(event) {
+        if ($state.current.name == "app.home") {
+            navigator.app.exitApp();
+        }
+    }, 100);
 
     $scope.tab = 'video';
     $scope.classa = 'active';
@@ -67,22 +92,6 @@ angular.module('starter.controllers', ['ion-gallery'])
         detail: "Low Street"
     }];
 
-    // $http.get('https://www.googleapis.com/youtube/v3/channels?part=contentDetails&forUsername=SQSProject&key=AIzaSyBcHbwhmLeZdOYgIhmZlpmQ_Rg2F40V3OU')
-    //   .success( function (data) {
-    //     console.log(data);
-    //   })
-    //   .error( function (err) {
-    //     console.log(err);
-    //   });
-
-    // $http.get('https://www.googleapis.com/youtube/v3/playlistItems?part=snippe&key=AIzaSyBcHbwhmLeZdOYgIhmZlpmQ_Rg2F40V3OU')
-    //       .success( function (data) {
-    //         console.log(data);
-    //       })
-    //       .error( function (err) {
-    //         console.log(err);
-    //       });
-
     var showloading = function() {
         $ionicLoading.show({
             template: '<img src="img/ring-alt.gif">'
@@ -94,61 +103,109 @@ angular.module('starter.controllers', ['ion-gallery'])
     showloading();
 
     $scope.searchedVideos = [];
-    // MyServices.getsearchresults("mtv unplugged",
-    //     function(data) {
-    //         if (data) {
-    //             // $ionicLoading.hide();
-    //             console.log(data);
-    //             $scope.searchedVideos = data.items;
-    //         }
-    //     },
-    //     function(err) {
-    //         if (err) {
-    //             // $ionicLoading.hide();
-    //             console.log(err);
-    //         }
-    //     });
+    $scope.defaultPlaylist = "";
+    $scope.playlist = {};
+    $scope.showNoVideos = false;
+    $scope.showNoBlogs = false;
 
-    MyServices.getPopularVideos(
-        function(data) {
-            if (data) {
-                // $ionicLoading.hide();
-                console.log(data);
-                $scope.searchedVideos = data.items;
-            }
-        },
-        function(err) {
-            if (err) {
-                // $ionicLoading.hide();
-                console.log(err);
-            }
-        });
+    if (MyServices.getConfig) {
+        MyServices.getUsersChannel(MyServices.getConfig().channelidname,
+            function(data) {
+                if (data) {
+                    // $ionicLoading.hide();
+                    console.log(data);
+                    if (data.items.length == 0) {
+                        $scope.keepScrolling = false;
+                        $scope.showNoVideos = true;
+                    }
+                    if (data.items.length > 0 && data.items[0].contentDetails.relatedPlaylists.uploads) {
+                        playlistIds = data.items[0].contentDetails.relatedPlaylists.uploads;
+                        $scope.defaultPlaylist = data.items[0].contentDetails.relatedPlaylists.uploads;
+                        getUsersPlaylist(data.items[0].contentDetails.relatedPlaylists.uploads);
+                    }
+                    if (data.items.length > 0 && data.items[0].contentDetails.relatedPlaylists.likes) {
+                        playlistIds += "," + data.items[0].contentDetails.relatedPlaylists.likes;
+                    }
+                    if (data.items.length > 0 && data.items[0].contentDetails.relatedPlaylists.favorites) {
+                        playlistIds += "," + data.items[0].contentDetails.relatedPlaylists.favorites;
+                    }
+                    $.jStorage.set("playlistIds", playlistIds)
+                }
+            },
+            function(err) {
+                if (err) {
+                    // $ionicLoading.hide();
+                    console.log(err);
+                }
+            });
+    }
 
-    // MyServices.getPlaylistById(
-    //     function(data) {
-    //         if (data) {
-    //             // $ionicLoading.hide();
-    //             console.log(data);
-    //             // $scope.searchedVideos = data.items;
-    //         }
-    //     },
-    //     function(err) {
-    //         if (err) {
-    //             // $ionicLoading.hide();
-    //             console.log(err);
-    //         }
-    //     });
+    function getUsersPlaylist(playlistId) {
+        MyServices.getSinglePlaylistById(playlistId,
+            function(data) {
+                if (data) {
+                    $ionicLoading.hide();
+                    console.log(data);
+                    $scope.playlist = data;
+                }
+            },
+            function(err) {
+                if (err) {
+                    $ionicLoading.hide();
+                    console.log(err);
+                }
+            });
+    }
+
+    $scope.keepScrolling = true;
+
+    $scope.loadMore = function(nextPageToken) {
+        if (nextPageToken) {
+            MyServices.getMorePlaylistVideos($scope.defaultPlaylist, nextPageToken,
+                function(data) {
+                    if (data) {
+                        $ionicLoading.hide();
+                        console.log(data);
+                        _.each(data.items, function(n) {
+                            $scope.playlist.items.push(n);
+                        });
+                        if (data.nextPageToken) {
+                            $scope.playlist.nextPageToken = data.nextPageToken;
+                        } else {
+                            $scope.playlist.nextPageToken = ""
+                        }
+                        $scope.$broadcast('scroll.infiniteScrollComplete');
+                        $scope.$broadcast('scroll.refreshComplete');
+                    }
+                },
+                function(err) {
+                    if (err) {
+                        $ionicLoading.hide();
+                        console.log(err);
+                    }
+                });
+        } else {
+            $scope.$broadcast('scroll.infiniteScrollComplete');
+            $scope.$broadcast('scroll.refreshComplete');
+            if ($scope.playlist.items)
+                $scope.keepScrolling = false;
+        }
+    };
 
     MyServices.getallevents(
         function(data) {
             if (data) {
+                $ionicLoading.hide();
                 console.log(data);
+                if (data.queryresult.length == 0) {
+                    $scope.showNoBlogs = true;
+                }
                 $scope.allEvents = data.queryresult;
             }
         },
         function(err) {
             if (err) {
-                // $ionicLoading.hide();
+                $ionicLoading.hide();
                 console.log(err);
             }
         });
@@ -158,7 +215,15 @@ angular.module('starter.controllers', ['ion-gallery'])
     //***** end *****
 })
 
-.controller('LoginCtrl', function($scope, MyServices, $ionicLoading, $timeout) {
+.controller('LoginCtrl', function($scope, MyServices, $ionicLoading, $timeout, $ionicPopup, $interval, $location, $ionicPlatform, $state) {
+
+    $.jStorage.flush();
+
+    $ionicPlatform.registerBackButtonAction(function(event) {
+        if ($state.current.name == "login") {
+            navigator.app.exitApp();
+        }
+    }, 100);
 
     var showloading = function() {
         $ionicLoading.show({
@@ -185,10 +250,17 @@ angular.module('starter.controllers', ['ion-gallery'])
             MyServices.signIn($scope.user,
                 function(data) {
                     if (data) {
-                        $ionicLoading.hide();
                         console.log(data);
-                        MyServices.setUser(data);
-                        $location.url("/app/home");
+                        if (data.trim() != 'false') {
+                            $ionicLoading.hide();
+                            MyServices.setUser(data);
+                            $location.url("/app/home");
+                        } else {
+                            $ionicLoading.hide();
+                            var alertPopup = $ionicPopup.alert({
+                                title: '<h4>Invalid Login Credentials</h4>',
+                            });
+                        }
                     }
                 },
                 function(err) {
@@ -199,6 +271,55 @@ angular.module('starter.controllers', ['ion-gallery'])
                 });
         }
     }
+
+    var callAtInterval = function() {
+        MyServices.authenticate(function(data) {
+            console.log(data.trim());
+            if (data.trim() != "false" && data != '') {
+                $interval.cancel(stopinterval);
+                ref.close();
+                MyServices.authenticate(function(data2) {
+                    $ionicLoading.hide();
+                    if (data2 != "false") {
+                        MyServices.setUser(data2);
+                        $location.url("/app/home");
+                    }
+                });
+            }
+        });
+    };
+
+    $scope.googleLogin = function() {
+
+        // ref = cordova.InAppBrowser.open(adminhauth + 'login/Google?returnurl=http://www.wohlig.com', '_blank', 'location=no');
+
+        ref = window.open(adminhauth + 'login/Google', '_blank', 'location=yes');
+        stopinterval = $interval(callAtInterval, 2000);
+        ref.addEventListener('exit', function(event) {
+            MyServices.authenticate(function(data) {
+                $ionicLoading.hide();
+                if (data != "false") {
+                    MyServices.setUser(data);
+                    $location.url("/app/home");
+                }
+            });
+            $interval.cancel(stopinterval);
+        });
+    }
+
+    MyServices.getConfigDetails(function(data) {
+            if (data) {
+                // $ionicLoading.hide();
+                console.log(data);
+                MyServices.setConfig(data);
+            }
+        },
+        function(err) {
+            if (err) {
+                // $ionicLoading.hide();
+                console.log(err);
+            }
+        });
 
 })
 
@@ -273,6 +394,8 @@ angular.module('starter.controllers', ['ion-gallery'])
 
 .controller('PickedCtrl', function($scope, $stateParams, $http, MyServices, $ionicLoading, $timeout, $filter) {
 
+    $scope.showNoVideos = false;
+
     var showloading = function() {
         $ionicLoading.show({
             template: '<img src="img/ring-alt.gif">'
@@ -304,6 +427,9 @@ angular.module('starter.controllers', ['ion-gallery'])
     MyServices.getPickedVideos(function(data) {
         if (data) {
             console.log(data);
+            if (data.queryresult.length == 0) {
+                $scope.showNoVideos = true;
+            }
             _.each(data.queryresult, function(n) {
                 $scope.fetchVideosFromYoutube(n.url);
             })
@@ -331,6 +457,8 @@ angular.module('starter.controllers', ['ion-gallery'])
         title: "Movies official trailer Gaming Photos"
     }];
 
+    $scope.showNoGallery = false;
+
     var showloading = function() {
         $ionicLoading.show({
             template: '<img src="img/ring-alt.gif">'
@@ -347,6 +475,9 @@ angular.module('starter.controllers', ['ion-gallery'])
                 $ionicLoading.hide();
                 console.log(data);
                 $scope.allGalleryCategory = data.queryresult;
+                if (data.queryresult.length == 0) {
+                    $scope.showNoGallery = true;
+                }
             }
         },
         function(err) {
@@ -355,6 +486,15 @@ angular.module('starter.controllers', ['ion-gallery'])
                 console.log(err);
             }
         });
+
+    $scope.refreshGallery = function() {
+        $ionicLoading.show({
+            template: '<img src="img/ring-alt.gif">'
+        });
+        $timeout(function() {
+            $ionicLoading.hide();
+        }, 1500);
+    }
 
 })
 
@@ -411,7 +551,7 @@ angular.module('starter.controllers', ['ion-gallery'])
 
 })
 
-.controller('SettingCtrl', function($scope, $stateParams, MyServices, $ionicLoading, $timeout, $filter, $ionicPopup) {
+.controller('SettingCtrl', function($scope, $stateParams, MyServices, $ionicLoading, $timeout, $filter, $ionicPopup, $cordovaImagePicker, $cordovaFileTransfer) {
 
     $scope.userDetails = MyServices.getUser();
     console.info($scope.userDetails);
@@ -459,6 +599,33 @@ angular.module('starter.controllers', ['ion-gallery'])
             })
     }
 
+    var options = {
+        maximumImagesCount: 1,
+        width: 800,
+        height: 800,
+        quality: 80,
+        allowEdit: true
+    };
+
+    $scope.picForCover = function() {
+        showloading();
+        $cordovaImagePicker.getPictures(options).then(function(resultImage) {
+            console.log(resultImage);
+            $ionicLoading.show({
+                template: '<img src="img/ring-alt.gif">'
+            });
+            $cordovaFileTransfer.upload(adminurl + "coverImageUpload?id=" + MyServices.getUser().id, resultImage[0], {})
+                .then(function(result) {
+                    var data = JSON.parse(result.response);
+                    console.log(data);
+                    $scope.userDetails.coverimage = data;
+                    $ionicLoading.hide();
+                }, function(err) {}, function(progress) {});
+        }, function(err) {
+            // An error occured. Show a message to the user
+        });
+    };
+
 })
 
 .controller('ProfileCtrl', function($scope) {
@@ -495,79 +662,65 @@ angular.module('starter.controllers', ['ion-gallery'])
 })
 
 .controller('PlaylistCtrl', function($scope, MyServices, $ionicLoading, $timeout) {
-    $scope.playlist = [{
-        image: "img/video/2.jpg",
-        title: "Weedeo's snowdown Videos",
-        video: "42",
-        view: "64"
-    }, {
-        image: "img/video/8.jpg",
-        title: "Gaming Videos",
-        video: "45",
-        view: "655"
-    }, {
-        image: "img/video/4.jpg",
-        title: "Music Trailor",
-        video: "9",
-        view: "4242"
-    }, {
-        image: "img/video/3.jpg",
-        title: "Movies official trailer Gaming Videos",
-        video: "18",
-        view: "648"
-    }];
+    // $scope.playlist = [{
+    //     image: "img/video/2.jpg",
+    //     title: "Weedeo's snowdown Videos",
+    //     video: "42",
+    //     view: "64"
+    // }, {
+    //     image: "img/video/8.jpg",
+    //     title: "Gaming Videos",
+    //     video: "45",
+    //     view: "655"
+    // }, {
+    //     image: "img/video/4.jpg",
+    //     title: "Music Trailor",
+    //     video: "9",
+    //     view: "4242"
+    // }, {
+    //     image: "img/video/3.jpg",
+    //     title: "Movies official trailer Gaming Videos",
+    //     video: "18",
+    //     view: "648"
+    // }];
 
-    $scope.playlistArray = ['PLcm_sbf1ZgNkBd--g7r0Ihlo65M90DSLf',
-        'PLcm_sbf1ZgNlHhi3wcRJCFufD6-AElxoP',
-        'PLhYdRzceVuzZjJgVTnSv-x1iwn84KMiR2',
-        'PLhYdRzceVuzYFPoxlwyaRkVO8abmm_uQH'
-    ];
+    var showloading = function() {
+        $ionicLoading.show({
+            template: '<img src="img/ring-alt.gif">'
+        });
+        $timeout(function() {
+            $ionicLoading.hide();
+        }, 3000);
+    };
+
+    showloading();
+
+    // var playlistIds = "PLcm_sbf1ZgNkBd--g7r0Ihlo65M90DSLf,PLcm_sbf1ZgNlHhi3wcRJCFufD6-AElxoP,PLhYdRzceVuzZjJgVTnSv-x1iwn84KMiR2,PLhYdRzceVuzYFPoxlwyaRkVO8abmm_uQH";
 
     $scope.playlist = [];
-    var i = 0;
-    _.each($scope.playlistArray, function(playlistId) {
-        MyServices.getPlaylistById(playlistId,
-            function(data) {
-                if (data) {
-                    // $ionicLoading.hide();
-                    // console.log(data);
-                    $scope.playlist.push(data);
-                    getChannelDetails(i, data.items[0].snippet.channelId);
-                    i++;
-                    console.log($scope.playlist);
-                }
-            },
-            function(err) {
-                if (err) {
-                    // $ionicLoading.hide();
-                    console.log(err);
-                }
-            });
-    })
+    $scope.showNoVideos = false;
 
-
-    function getChannelDetails(count, channelId) {
-        MyServices.getChannelDetails(channelId,
-            function(data) {
-                if (data) {
-                    // $ionicLoading.hide();
-                    // console.log(data);
-                    $scope.playlist[count].channelDetails = data.items[0];
+    MyServices.getPlaylistByIds($.jStorage.get("playlistIds"),
+        function(data) {
+            if (data) {
+                $ionicLoading.hide();
+                console.log(data);
+                if (data.items.length == 0) {
+                    $scope.showNoVideos = true;
                 }
-            },
-            function(err) {
-                if (err) {
-                    // $ionicLoading.hide();
-                    console.log(err);
-                }
-            });
-
-    }
-
+                $scope.playlist = data.items;
+            }
+        },
+        function(err) {
+            if (err) {
+                $ionicLoading.hide();
+                console.log(err);
+            }
+        });
 })
 
 
-.controller('VideodetailCtrl', function($scope, $ionicModal, $timeout, $stateParams, MyServices, $ionicScrollDelegate, $ionicLoading, $timeout) {
+.controller('VideodetailCtrl', function($scope, $ionicModal, $timeout, $stateParams, MyServices, $ionicScrollDelegate, $ionicLoading, $timeout, $cordovaSocialSharing) {
 
     // $scope.video = [{
     //     image: "img/video/2.jpg",
@@ -642,80 +795,169 @@ angular.module('starter.controllers', ['ion-gallery'])
 
     $scope.refresh($stateParams.id);
 
+    $scope.shareVideoLink = function(imglink) {
+        $cordovaSocialSharing
+            .share("Checkout this video", "", imglink, "https://www.youtube.com/watch?v=" + $scope.video.id)
+            // Share via native share sheet
+            .then(function(result) {
+                // Success!
+            }, function(err) {
+                // An error occured. Show a message to the user
+            });
+    }
+
 })
 
-.controller('PlaylistvideoCtrl', function($scope, $ionicModal, $timeout) {
+.controller('PlaylistvideoCtrl', function($scope, $ionicModal, $timeout, $stateParams, MyServices, $ionicScrollDelegate, $ionicLoading, $timeout) {
 
-        $scope.video = [{
-            image: "img/video/2.jpg",
-            title: "Weedeo's snowdown official trailer",
-            cat: "Movie Clip",
-            view: "64"
-        }, {
-            image: "img/video/3.jpg",
-            title: "Weedeo's Blackhat official trailer",
-            cat: "Movie trailer Clip",
-            view: "655"
-        }, {
-            image: "img/video/4.jpg",
-            title: "Music Concert",
-            cat: "Media & Entertainment",
-            view: "4242"
-        }, {
-            image: "img/video/5.jpg",
-            title: "Weedeo's Music Concert",
-            cat: "Music Trailor",
-            view: "648"
-        }];
+    // $scope.video = [{
+    //     image: "img/video/2.jpg",
+    //     title: "Weedeo's snowdown official trailer",
+    //     cat: "Movie Clip",
+    //     view: "64"
+    // }, {
+    //     image: "img/video/3.jpg",
+    //     title: "Weedeo's Blackhat official trailer",
+    //     cat: "Movie trailer Clip",
+    //     view: "655"
+    // }, {
+    //     image: "img/video/4.jpg",
+    //     title: "Music Concert",
+    //     cat: "Media & Entertainment",
+    //     view: "4242"
+    // }, {
+    //     image: "img/video/5.jpg",
+    //     title: "Weedeo's Music Concert",
+    //     cat: "Music Trailor",
+    //     view: "648"
+    // }];
 
+    $scope.keepScrolling = true;
 
+    var showloading = function() {
+        $ionicLoading.show({
+            template: '<img src="img/ring-alt.gif">'
+        });
+        $timeout(function() {
+            $ionicLoading.hide();
+        }, 3000);
+    };
 
+    showloading();
 
-
-
-    })
-    .controller('FeedCtrl', function($scope, $ionicScrollDelegate, $stateParams) {
-        //        ***** tabchange ****
-
-        $scope.tab = 'twitter';
-        $scope.classa = 'active';
-        $scope.classb = '';
-
-        $scope.tabchange = function(tab, a) {
-            //        console.log(tab);
-            $scope.tab = tab;
-            if (a == 1) {
-                $ionicScrollDelegate.scrollTop();
-                $scope.classa = "active";
-                $scope.classb = '';
-                $scope.classc = '';
-            } else if (a == 2) {
-                $ionicScrollDelegate.scrollTop();
-                $scope.classa = '';
-                $scope.classb = "active";
-                $scope.classc = '';
-            } else {
-                $ionicScrollDelegate.scrollTop();
-                $scope.classa = '';
-                $scope.classb = '';
-                $scope.classc = "active";
+    $scope.playlistItems = {};
+    MyServices.getSinglePlaylistById($stateParams.id,
+        function(data) {
+            if (data) {
+                $ionicLoading.hide();
+                console.log(data);
+                $scope.playlistItems = data;
             }
-        };
+        },
+        function(err) {
+            if (err) {
+                $ionicLoading.hide();
+                console.log(err);
+            }
+        });
+
+    $scope.playVideo = function(index) {
+        var videoToPlay = $scope.playlistItems.items.splice(index, 1);
+        $scope.playlistItems.items.unshift(videoToPlay[0]);
+    }
+
+    $scope.loadMore = function(nextPageToken) {
+        if (nextPageToken) {
+            MyServices.getMorePlaylistVideos($stateParams.id, nextPageToken,
+                function(data) {
+                    if (data) {
+                        $ionicLoading.hide();
+                        console.log(data);
+                        _.each(data.items, function(n) {
+                            $scope.playlistItems.items.push(n);
+                        });
+                        if (data.nextPageToken) {
+                            $scope.playlistItems.nextPageToken = data.nextPageToken;
+                        } else {
+                            $scope.playlistItems.nextPageToken = ""
+                        }
+                        $scope.$broadcast('scroll.infiniteScrollComplete');
+                        $scope.$broadcast('scroll.refreshComplete');
+                    }
+                },
+                function(err) {
+                    if (err) {
+                        $ionicLoading.hide();
+                        console.log(err);
+                    }
+                });
+        } else {
+            $scope.$broadcast('scroll.infiniteScrollComplete');
+            $scope.$broadcast('scroll.refreshComplete');
+            if ($scope.playlistItems.items)
+                $scope.keepScrolling = false;
+        }
+    };
+
+})
+
+.controller('FeedCtrl', function($scope, $ionicScrollDelegate, $stateParams) {
+    //        ***** tabchange ****
+
+    $scope.tab = 'twitter';
+    $scope.classa = 'active';
+    $scope.classb = '';
+
+    $scope.tabchange = function(tab, a) {
+        //        console.log(tab);
+        $scope.tab = tab;
+        if (a == 1) {
+            $ionicScrollDelegate.scrollTop();
+            $scope.classa = "active";
+            $scope.classb = '';
+            $scope.classc = '';
+        } else if (a == 2) {
+            $ionicScrollDelegate.scrollTop();
+            $scope.classa = '';
+            $scope.classb = "active";
+            $scope.classc = '';
+        } else {
+            $ionicScrollDelegate.scrollTop();
+            $scope.classa = '';
+            $scope.classb = '';
+            $scope.classc = "active";
+        }
+    };
 
 
-        //            ******** end *******
+    //            ******** end *******
 
-    })
-    .controller('BioCtrl', function($scope) {
+})
 
-    })
+.controller('BioCtrl', function($scope, $stateParams, MyServices, $ionicLoading, $timeout) {
+
+    var showloading = function() {
+        $ionicLoading.show({
+            template: '<img src="img/ring-alt.gif">'
+        });
+        $timeout(function() {
+            $ionicLoading.hide();
+        }, 1500);
+    };
+    showloading();
+
+    $scope.configUser = MyServices.getConfig();
+    $scope.configUser.row = _.chunk($scope.configUser.row, 2);
+    console.info($scope.configUser);
+
+})
 
 
 .controller('EventCtrl', function($scope, $stateParams, MyServices, $ionicLoading, $timeout) {
 
 
     //    ******* custom json ******
-
+    $scope.showNoEvents = false;
     var showloading = function() {
         $ionicLoading.show({
             template: '<img src="img/ring-alt.gif">'
@@ -757,6 +999,9 @@ angular.module('starter.controllers', ['ion-gallery'])
             if (data) {
                 $ionicLoading.hide();
                 console.log(data);
+                if (data.queryresult.length == 0) {
+                    $scope.showNoEvents = true;
+                }
                 $scope.allEvents = data.queryresult;
             }
         },

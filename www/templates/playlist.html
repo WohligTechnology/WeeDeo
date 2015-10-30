@@ -1,21 +1,22 @@
 <ion-view view-title="Playlist">
     <ion-content>
-
-        <div class="card video-category" ng-repeat="item in playlist">
+        <div class="card video-category" ng-repeat="list in playlist">
             <div class="item item-text-wrap">
                 <figure>
-                    <a href="#/app/playlistvideo"><img ng-src="{{item.channelDetails.snippet.thumbnails.high.url}}" class="full-image"></a>
+                    <a ui-sref="app.playlistvideo({id:list.id})"><img ng-src="{{list.snippet.thumbnails.medium.url}}" class="full-image"></a>
                 </figure>
                 <div class="cat-name ">
                     <!-- <div class="evnt-det pull-right">
                         <i class="ion-heart "></i>
                         <span>{{item.statistics.viewCount | convertTok}}</span>
                     </div> -->
-                    <h4>{{item.channelDetails.snippet.localized.title}}</h4>
-                    <p>{{item.pageInfo.totalResults}} Videos</p>
+                    <h4>{{list.snippet.localized.title}}</h4>
+                    <p>{{list.contentDetails.itemCount}} Videos</p>
                 </div>
             </div>
         </div>
-
+        <div class="center" ng-show="showNoVideos">
+            <p>No Playlists Found</p>
+        </div>
     </ion-content>
 </ion-view>

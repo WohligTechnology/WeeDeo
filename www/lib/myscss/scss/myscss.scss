@@ -390,7 +390,7 @@ a:hover {
     }
     .img-layer {
         height: 100%;
-        background:-webkit-linear-gradient(rgba(63, 81, 181, 0.16) 18%, rgba(50, 64, 143, 0.68));
+        background: -webkit-linear-gradient(rgba(63, 81, 181, 0.16) 18%, rgba(50, 64, 143, 0.68));
         background: -moz-linear-gradient(rgba(63, 81, 181, 0.16) 18%, rgba(50, 64, 143, 0.68));
         background: -ms-linear-gradient(rgba(63, 81, 181, 0.16) 18%, rgba(50, 64, 143, 0.68));
         background: -o-linear-gradient(rgba(63, 81, 181, 0.16) 18%, rgba(50, 64, 143, 0.68));
@@ -749,4 +749,18 @@ a:hover {
 
 .ng-invalid.ng-dirty {
     border-bottom: 2px solid red !important;
+}
+
+.center{
+    position: relative;
+  
+    min-height: 350px;
+    p{
+        position: absolute;
+    top: 50%;
+    left: 50%;
+ 
+    transform: translate(-50%,-50%);
+    font-size: 18px;
+    }
 }

@@ -26,7 +26,7 @@
                             <p>{{videoDetails.statistics.dislikeCount | convertTok}}</p>
                         </div>
                     </div>
-                    <div class="col col-33 padzero">
+                    <div class="col col-33 padzero" ng-click="shareVideoLink(videoDetails.snippet.thumbnails.high.url);">
                         <div class="follow">
                             <i class="ln-share2"></i>
                             <p>Share</p>

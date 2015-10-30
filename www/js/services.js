@@ -1,11 +1,12 @@
-var adminbase = "http://localhost/youtube/";
+// var adminbase = "http://localhost/youtube/";
+var adminbase = "http://wohlig.co.in/youtube/";
 
 var adminurl = adminbase + "index.php/json/";
 var adminimage = adminbase + "uploads/";
 var adminhauth = adminbase + "index.php/hauth/";
 var imgpath = adminimage + "image?name=";
 
-var apiKey = "AIzaSyBcHbwhmLeZdOYgIhmZlpmQ_Rg2F40V3OU";
+var apiKey = "AIzaSyAx9mqCCaF9Bp7AkatHxg9SVVfGxgVwohM";
 
 angular.module('starter.services', [])
 
@@ -70,13 +71,33 @@ angular.module('starter.services', [])
                 }
             }).success(callback).error(err)
         },
-        getPlaylistById: function(playlistId, callback, err) {
+        getSinglePlaylistById: function(playlistId, callback, err) {
             $http.get('https://www.googleapis.com/youtube/v3/playlistItems', {
                 params: {
                     maxResults: '10',
                     playlistId: playlistId,
                     key: apiKey,
                     part: 'id,snippet,contentDetails'
+                }
+            }).success(callback).error(err)
+        },
+        getMorePlaylistVideos: function(playlistId, nextPageToken, callback, err) {
+            $http.get('https://www.googleapis.com/youtube/v3/playlistItems', {
+                params: {
+                    maxResults: '10',
+                    playlistId: playlistId,
+                    key: apiKey,
+                    pageToken: nextPageToken,
+                    part: 'id,snippet,contentDetails'
+                }
+            }).success(callback).error(err)
+        },
+        getPlaylistByIds: function(playlistIds, callback, err) {
+            $http.get('https://www.googleapis.com/youtube/v3/playlists', {
+                params: {
+                    id: playlistIds,
+                    key: apiKey,
+                    part: 'id,snippet,contentDetails,player,status'
                 }
             }).success(callback).error(err)
         },
@@ -90,7 +111,7 @@ angular.module('starter.services', [])
                 }
             }).success(callback).error(err)
         },
-        getChannelDetails: function(channelId, callback, err) {
+        getUsersChannel: function(channelId, callback, err) {
             $http.get('https://www.googleapis.com/youtube/v3/channels', {
                 params: {
                     key: apiKey,
@@ -114,6 +135,9 @@ angular.module('starter.services', [])
         getallphotogallery: function(galleryId, callback, err) {
             $http.get(adminurl + "getallphotogallery?id=" + galleryId).success(callback).error(err)
         },
+        getConfigDetails: function(callback, err) {
+            $http.get(adminurl + "getConfigDetails").success(callback).error(err)
+        },
         editProfile: function(userData, callback, err) {
             $http({
                 url: adminurl + 'editprofile',
@@ -135,11 +159,23 @@ angular.module('starter.services', [])
                 data: userData
             }).success(callback).error(err);
         },
+        authenticate: function(callback) {
+            $http({
+                url: adminurl + 'authenticate',
+                method: 'POST'
+            }).success(callback);
+        },
         setUser: function(data) {
             $.jStorage.set("user", data);
         },
         getUser: function() {
             return $.jStorage.get("user");
+        },
+        setConfig: function(data) {
+            $.jStorage.set("config", data);
+        },
+        getConfig: function() {
+            return $.jStorage.get("config");
         }
     };
 

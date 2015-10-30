@@ -40,9 +40,9 @@
                 </figure>
             </div>
 -->
-            <div ng-repeat="videos in searchedVideos track by $index" ng-if="searchedVideos.length>0">
+            <div ng-repeat="videos in playlist.items track by $index" ng-if="playlist.items.length>0">
                 <div class="video-set animated bounceInLeft" ng-if="$index%2==0">
-                    <figure ui-sref="app.videodetail({id:videos.id})">
+                    <figure ui-sref="app.videodetail({id:videos.snippet.resourceId.videoId})">
                         <img ng-src="{{videos.snippet.thumbnails.high.url}}" class="full-image">
                         <div class="img-layer">
                             <div class="bottom-txt">
@@ -52,7 +52,7 @@
                     </figure>
                 </div>
                 <div class="video-set animated bounceInRight" ng-if="$index%2!=0">
-                    <figure ui-sref="app.videodetail({id:videos.id})">
+                    <figure ui-sref="app.videodetail({id:videos.snippet.resourceId.videoId})">
                         <img ng-src="{{videos.snippet.thumbnails.high.url}}" class="full-image">
                         <div class="img-layer">
                             <div class="bottom-txt">
@@ -61,6 +61,11 @@
                         </div>
                     </figure>
                 </div>
+            </div>
+            <ion-infinite-scroll on-infinite="loadMore(playlist.nextPageToken)" ng-if="keepScrolling" distance="25%" ng-if="tab=='video'" style="height:0px">
+            </ion-infinite-scroll>
+            <div class="center" ng-show="showNoVideos">
+                <p>No Videos Found</p>
             </div>
         </div>
         <div class="event" ng-show="tab=='event'">
@@ -92,34 +97,9 @@
                     </div>
                 </div>
             </div>
-            <!--
-   <div class="list">
-
-    <a class="item item-thumbnail-left" href="#">
-      <img src="img/event/2.jpg">
-      <h2>Pretty Hate Machine</h2>
-      <p>Date :</p>
-      <p>Venue :</p>
-      <p>Detail :</p>
-    </a>
-
-   
-
-</div>
-   <div class="list">
-
-    <a class="item item-thumbnail-left" href="#">
-      <img src="img/event/3.jpg">
-      <h2>Pretty Hate Machine</h2>
-      <p>Date :</p>
-      <p>Venue :</p>
-      <p>Detail :</p>
-    </a>
-
-   
-
-</div>
--->
+            <div class="center" ng-show="showNoBlogs">
+                <p>No Events Found</p>
+            </div>
         </div>
         <div class="twitt" ng-show="tab=='Twitt'">
             <div class="list">

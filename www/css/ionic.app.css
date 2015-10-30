@@ -542,6 +542,16 @@ a, a:hover {
 .ng-invalid.ng-dirty {
   border-bottom: 2px solid red !important; }
 
+.center {
+  position: relative;
+  min-height: 350px; }
+  .center p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px; }
+
 /*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/

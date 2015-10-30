@@ -1,80 +1,68 @@
 <ion-side-menus enable-menu-with-back-views="false" class="bg-img">
-  <ion-side-menu-content>
-    <ion-nav-bar class="bar-calm">
-      <ion-nav-back-button>
-      </ion-nav-back-button>
-
-      <ion-nav-buttons side="left">
-        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
-        </button>
-      </ion-nav-buttons>
-    </ion-nav-bar>
-    <ion-nav-view name="menuContent"></ion-nav-view>
-  </ion-side-menu-content>
-
-  <ion-side-menu side="left" class="custom-bar">
-    <ion-header-bar class="bar-side bg-menu">
-   <div class="side-image">
-                  <div class="profile-set">
+    <ion-side-menu-content>
+        <ion-nav-bar class="bar-calm">
+            <ion-nav-back-button>
+            </ion-nav-back-button>
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+                </button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-nav-view name="menuContent"></ion-nav-view>
+    </ion-side-menu-content>
+    <ion-side-menu side="left" class="custom-bar">
+        <ion-header-bar class="bar-side bg-menu">
+            <div class="side-image">
+                <div class="profile-set">
                     <a href="#/app/setting" menu-close> <i class="icon ln-pencil "></i>
                     </a>
                 </div>
                 <figure class="img-bg">
-                    <a href="#/app/profile" menu-close ><img  src="img/user/1.png"></a>
+                    <a href="#/app/profile" menu-close>
+                        <img src="img/user/1.png" ng-if="!userDetails.image">
+                        <img src="{{userDetails.image | indexOfHttp}}" ng-if="userDetails.image">
+                    </a>
                     <figcaption>{{userDetails.name}}</figcaption>
                     <!-- <figcaption>Twanda Keaton</figcaption> -->
                     <p ng-if="userDetails.profession">{{userDetails.profession}}</p>
                     <!-- <p>Web Developer</p> -->
                 </figure>
-              
-          </div>
-
             </div>
-    </ion-header-bar>
-    <ion-content style="top:190px;" class="menu-list">
-      <ion-list>
-          <ion-item nav-clear menu-close href="#/app/home">
-           <i class="icon ln-home3 side-menu-i"></i>
-         Home
-        </ion-item>
-        <ion-item nav-clear menu-close href="#/app/video">
-           <i class="icon ln-play side-menu-i"></i>
-          latest Video
-        </ion-item>
-        <ion-item nav-clear menu-close href="#/app/picked">
-           <i class="icon ln-film-play side-menu-i"></i>
-         picked Video
-        </ion-item>
-          <ion-item nav-clear menu-close href="#/app/playlist">
-           <i class="icon ln-playlist side-menu-i"></i>
-         playlist
-        </ion-item>
-        <ion-item nav-clear menu-close href="#/app/event">
-           <i class="icon ln-calendar2 side-menu-i"></i>
-          event
-        </ion-item>
-        <ion-item nav-clear menu-close href="#/app/gallery">
-           <i class="icon ln-picture side-menu-i"></i>
-          gallery
-        </ion-item> 
-          <ion-item nav-clear menu-close href="#/app/bio">
-           <i class="icon ln-user side-menu-i"></i>
-          Bio
-        </ion-item>
-            <ion-item nav-clear menu-close href="#/app/feed">
-           <i class="icon ln-options side-menu-i"></i>
-          Feeds
-        </ion-item>
-        <ion-item nav-clear menu-close href="#/app/notification">
-           <i class="icon ln-bell side-menu-i"></i>
-          notifications
-        </ion-item>
-    
-         <ion-item nav-clear menu-close href="#/login">
-           <i class="icon ln-exit side-menu-i"></i>
-          sign out
-        </ion-item>
-      </ion-list>
-    </ion-content>
-  </ion-side-menu>
+            </div>
+        </ion-header-bar>
+        <ion-content style="top:190px;" class="menu-list">
+            <ion-list>
+                <ion-item nav-clear menu-close href="#/app/home">
+                    <i class="icon ln-home3 side-menu-i"></i> Home
+                </ion-item>
+                <ion-item nav-clear menu-close href="#/app/video">
+                    <i class="icon ln-play side-menu-i"></i> latest Video
+                </ion-item>
+                <ion-item nav-clear menu-close href="#/app/picked">
+                    <i class="icon ln-film-play side-menu-i"></i> picked Video
+                </ion-item>
+                <ion-item nav-clear menu-close href="#/app/playlist">
+                    <i class="icon ln-playlist side-menu-i"></i> playlist
+                </ion-item>
+                <ion-item nav-clear menu-close href="#/app/event">
+                    <i class="icon ln-calendar2 side-menu-i"></i> event
+                </ion-item>
+                <ion-item nav-clear menu-close href="#/app/gallery">
+                    <i class="icon ln-picture side-menu-i"></i> gallery
+                </ion-item>
+                <ion-item nav-clear menu-close href="#/app/bio">
+                    <i class="icon ln-user side-menu-i"></i> Bio
+                </ion-item>
+                <ion-item nav-clear menu-close href="#/app/feed">
+                    <i class="icon ln-options side-menu-i"></i> Feeds
+                </ion-item>
+                <ion-item nav-clear menu-close href="#/app/notification">
+                    <i class="icon ln-bell side-menu-i"></i> notifications
+                </ion-item>
+                <ion-item nav-clear menu-close href="#/login">
+                    <i class="icon ln-exit side-menu-i"></i> sign out
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
 </ion-side-menus>
