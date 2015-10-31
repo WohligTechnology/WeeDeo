@@ -41,7 +41,19 @@ angular.module('starter.services', [])
             }).success(callback).error(err)
 
         },
-        getsearchresults: function(search, callback, err) {
+        getLatestVideos: function(channelId, callback, err) {
+            $http.get('https://www.googleapis.com/youtube/v3/search', {
+                params: {
+                    key: apiKey,
+                    channelId: channelId,
+                    part: 'id,snippet',
+                    order: 'date',
+                    maxResults: '10'
+                }
+            }).success(callback).error(err)
+
+        },
+        getserchresults: function(search, callback, err) {
             $http.get('https://www.googleapis.com/youtube/v3/search', {
                 params: {
                     key: apiKey,

@@ -1,7 +1,7 @@
 var playlistIds = "";
 angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, MyServices) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, MyServices, $location) {
 
     $scope.userDetails = MyServices.getUser();
     console.error($scope.userDetails);
@@ -20,15 +20,18 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
             }
         });
 
+    $scope.logout = function() {
+        $.jStorage.flush();
+        $location.url("/login");
+    }
+
 })
 
 .controller('HomeCtrl', function($scope, $ionicScrollDelegate, $stateParams, $http, MyServices, $ionicLoading, $timeout, $filter, $location, $ionicPlatform, $state) {
 
     //        ***** tabchange ****
 
-    if (!$.jStorage.get("user")) {
-        $location.url("/login");
-    }
+
 
     $ionicPlatform.registerBackButtonAction(function(event) {
         if ($state.current.name == "app.home") {
@@ -108,7 +111,7 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
     $scope.showNoVideos = false;
     $scope.showNoBlogs = false;
 
-    if (MyServices.getConfig) {
+    if (MyServices.getConfig() && MyServices.getConfig().channelidname) {
         MyServices.getUsersChannel(MyServices.getConfig().channelidname,
             function(data) {
                 if (data) {
@@ -138,6 +141,9 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
                     console.log(err);
                 }
             });
+    } else {
+        $scope.keepScrolling = false;
+        $scope.showNoVideos = true;
     }
 
     function getUsersPlaylist(playlistId) {
@@ -217,7 +223,9 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
 
 .controller('LoginCtrl', function($scope, MyServices, $ionicLoading, $timeout, $ionicPopup, $interval, $location, $ionicPlatform, $state) {
 
-    $.jStorage.flush();
+    if ($.jStorage.get("user")) {
+        $location.url("/app/home");
+    }
 
     $ionicPlatform.registerBackButtonAction(function(event) {
         if ($state.current.name == "login") {
@@ -251,7 +259,7 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
                 function(data) {
                     if (data) {
                         console.log(data);
-                        if (data.trim() != 'false') {
+                        if (data != 'false') {
                             $ionicLoading.hide();
                             MyServices.setUser(data);
                             $location.url("/app/home");
@@ -274,8 +282,8 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
 
     var callAtInterval = function() {
         MyServices.authenticate(function(data) {
-            console.log(data.trim());
-            if (data.trim() != "false" && data != '') {
+            console.log(data);
+            if (data != "false" && data != '') {
                 $interval.cancel(stopinterval);
                 ref.close();
                 MyServices.authenticate(function(data2) {
@@ -388,7 +396,39 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
 
 })
 
-.controller('VideoCtrl', function($scope) {
+.controller('VideoCtrl', function($scope, $stateParams, $http, MyServices, $ionicLoading, $timeout, $filter) {
+
+    var showloading = function() {
+        $ionicLoading.show({
+            template: '<img src="img/ring-alt.gif">'
+        });
+        $timeout(function() {
+            $ionicLoading.hide();
+        }, 3000);
+    };
+    showloading();
+
+    $scope.showNoVideos = false;
+
+    if (MyServices.getConfig() && MyServices.getConfig().channelidname) {
+        MyServices.getLatestVideos(MyServices.getConfig().channelidname, function(data) {
+            if (data) {
+                console.log(data);
+                if (data.items.length == 0) {
+                    $scope.showNoVideos = true;
+                }
+                $scope.latestVideos = data;
+                $ionicLoading.hide();
+            }
+        }, function(err) {
+            if (err) {
+                console.log(err);
+                $ionicLoading.hide();
+            }
+        });
+    } else {
+        $scope.showNoVideos = true;
+    }
 
 })
 

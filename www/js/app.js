@@ -18,10 +18,10 @@ var formvalidation = function(allvalidation) {
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 .run(function($ionicPlatform) {
-    var tag = document.createElement('script');
-    tag.src = "http://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    // var tag = document.createElement('script');
+    // tag.src = "http://www.youtube.com/iframe_api";
+    // var firstScriptTag = document.getElementsByTagName('script')[0];
+    // firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
     $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -40,7 +40,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
     // delete $httpProvider.defaults.headers.common['X-Requested-With'];
-    $httpProvider.defaults.withCredentials = false;
+    $httpProvider.defaults.withCredentials = true;
     $stateProvider
 
         .state('app', {
@@ -202,7 +202,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/app/home');
+    $urlRouterProvider.otherwise('/login');
 })
 
 .directive('youtube', function($sce) {
