@@ -1,5 +1,6 @@
-// var adminbase = "http://localhost/youtube/";
-var adminbase = "http://wohlig.co.in/youtube/";
+// var adminbase = "http://192.168.0.102/youtube/";
+var adminbase = "http://localhost/youtube/";
+// var adminbase = "http://wohlig.co.in/youtube/";
 
 var adminurl = adminbase + "index.php/json/";
 var adminimage = adminbase + "uploads/";

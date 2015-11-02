@@ -672,7 +672,7 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
 
 })
 
-.controller('EventdetailCtrl', function($scope, $stateParams, MyServices, $ionicLoading, $timeout) {
+.controller('EventdetailCtrl', function($scope, $stateParams, MyServices, $ionicLoading, $timeout, $filter) {
 
     var showloading = function() {
         $ionicLoading.show({
@@ -698,6 +698,22 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
                 console.log(err);
             }
         })
+
+    $scope.shareEvent = function() {
+        var data = {};
+        data.startdate = $filter('formatDate')($scope.eventDetail.startdate);
+        data.starttime = $filter('formatTime')($scope.eventDetail.starttime);
+        data.image = $filter('serverimage')($scope.eventDetail.image);
+        console.log("Checkout '" + $scope.eventDetail.name + "' starting on " + data.startdate + " " + data.starttime + " At " + $scope.eventDetail.venue)
+        $cordovaSocialSharing
+            .share("Checkout '" + $scope.eventDetail.name + "' starting on " + data.startdate + " " + data.starttime + " At " + $scope.eventDetail.venue, "", data.image, $scope.eventDetail.url)
+            // Share via native share sheet
+            .then(function(result) {
+                // Success!
+            }, function(err) {
+                // An error occured. Show a message to the user
+            });
+    }
 
 })
 
